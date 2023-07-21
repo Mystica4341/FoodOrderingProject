@@ -1,7 +1,6 @@
-package com.mobile.foodorderingproject;
+package com.mobile.foodorderingproject.View;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,9 +15,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
+import com.mobile.foodorderingproject.R;
 
 public class MainActivity extends AppCompatActivity {
 
