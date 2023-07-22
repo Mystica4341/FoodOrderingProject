@@ -5,8 +5,70 @@
     android:layout_height="match_parent"
     tools:context=".View.ShoppingCartFrag">
 
-    <ListView
-        android:id="@+id/GridShopping"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/GridShopping"
+            android:layout_width="match_parent"
+            android:layout_height="580dp"
+            android:layout_weight="1">
+
+        </ListView>
+
+        <TextView
+            android:id="@+id/tvTongmon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:layout_weight="1"
+            android:textSize="50dp"
+            android:text="Tổng món:" />
+        <TextView
+            android:id="@+id/tvTongtien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:layout_weight="1"
+            android:textSize="50dp"
+            android:text="Tổng tiền:" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:text="Thêm" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:text="Xóa" />
+
+            <Button
+                android:id="@+id/btnConfirm"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Đặt món" />
+
+        </LinearLayout>
+    </LinearLayout>
+
 </FrameLayout>
