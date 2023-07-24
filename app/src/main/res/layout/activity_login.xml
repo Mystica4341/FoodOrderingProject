@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/material_dynamic_primary90"
     tools:context=".View.LogIn_Activity">
 
     <LinearLayout
@@ -12,9 +13,8 @@
         android:layout_height="500dp"
         android:layout_gravity="center"
         android:layout_marginTop="150dp"
-        android:background="#BBEEF4"
-        android:orientation="vertical">
 
+        android:orientation="vertical">
         <TextView
             android:id="@+id/textView4"
             android:layout_width="550dp"
@@ -24,6 +24,7 @@
             android:layout_marginBottom="20dp"
             android:gravity="center"
             android:text="LOG IN"
+            android:textStyle="bold"
             android:textColor="#00BCD4"
             android:textSize="70dp" />
 
