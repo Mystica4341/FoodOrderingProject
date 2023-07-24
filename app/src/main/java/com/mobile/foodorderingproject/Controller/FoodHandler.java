@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class FoodHandler extends SQLiteOpenHelper {
-    private static final String DB_NAME = "qlsv";
+    private static final String DB_NAME = "qlch";
     @SuppressLint("SdCardPath")
     private static final String PATH = "/data/data/com.mobile.foodorderingproject/database/FoodOrdering.db";
     private static final String TABLE_NAME = "Food";
