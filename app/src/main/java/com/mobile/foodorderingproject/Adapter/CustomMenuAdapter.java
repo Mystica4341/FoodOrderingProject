@@ -1,6 +1,7 @@
 package com.mobile.foodorderingproject.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +10,21 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mobile.foodorderingproject.Model.Combo;
+import com.mobile.foodorderingproject.Model.Dessert;
+import com.mobile.foodorderingproject.Model.Drink;
 import com.mobile.foodorderingproject.Model.Food;
 import com.mobile.foodorderingproject.R;
+import com.mobile.foodorderingproject.View.MainActivity;
 
 import java.util.List;
 
-public class CustomFoodAdapter extends BaseAdapter {
+public class CustomMenuAdapter extends BaseAdapter {
 
     private List<Food> lsFood;
+    private List<Drink> lsDrink;
+    private List<Dessert> lsDessert;
+    private List<Combo> lsCombo;
     private LayoutInflater layoutInflater;
 
     @Override
@@ -60,7 +68,7 @@ public class CustomFoodAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public CustomFoodAdapter(List<Food> lsFood, LayoutInflater layoutInflater) {
+    public CustomMenuAdapter(List<Food> lsFood, LayoutInflater layoutInflater) {
         this.lsFood = lsFood;
         this.layoutInflater = layoutInflater;
     }
@@ -75,5 +83,9 @@ public class CustomFoodAdapter extends BaseAdapter {
     static class ViewHolder {
         ImageView menuView;
         TextView nameView, priceView;
+    }
+    public void  MenuFood ()
+    {
+        Intent intent = new Intent(CustomMenuAdapter.this, MainActivity.class);
     }
 }
