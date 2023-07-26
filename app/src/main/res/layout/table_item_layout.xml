@@ -4,11 +4,10 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tvTable"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_margin="40dp"
-        android:background="@drawable/border"
         android:gravity="center"
         android:text="000"
         android:textColor="#4CAF50"

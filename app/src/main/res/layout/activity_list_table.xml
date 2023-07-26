@@ -10,5 +10,6 @@
         android:id="@+id/GridTable"
         android:layout_width="match_parent"
         android:numColumns="4"
+        android:padding="10dp"
         android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

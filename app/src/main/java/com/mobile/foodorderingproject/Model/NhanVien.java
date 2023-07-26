@@ -1,48 +1,48 @@
 package com.mobile.foodorderingproject.Model;
 
 public class NhanVien {
-    String tennv, taikhoan, matkhau;
-    int manv;
+    String tenNv, taiKhoan, matKhau;
+    int maNv;
 
     public NhanVien(String tennv, String taikhoan, String matkhau, int manv) {
-        this.tennv = tennv;
-        this.taikhoan = taikhoan;
-        this.matkhau = matkhau;
-        this.manv = manv;
+        this.tenNv = tennv;
+        this.taiKhoan = taikhoan;
+        this.matKhau = matkhau;
+        this.maNv = manv;
     }
 
     public NhanVien() {
     }
 
-    public String getTennv() {
-        return tennv;
+    public String getTenNv() {
+        return tenNv;
     }
 
-    public void setTennv(String tennv) {
-        this.tennv = tennv;
+    public void setTenNv(String tenNv) {
+        this.tenNv = tenNv;
     }
 
-    public String getTaikhoan() {
-        return taikhoan;
+    public String getTaiKhoan() {
+        return taiKhoan;
     }
 
-    public void setTaikhoan(String taikhoan) {
-        this.taikhoan = taikhoan;
+    public void setTaiKhoan(String taiKhoan) {
+        this.taiKhoan = taiKhoan;
     }
 
-    public String getMatkhau() {
-        return matkhau;
+    public String getMatKhau() {
+        return matKhau;
     }
 
-    public void setMatkhau(String matkhau) {
-        this.matkhau = matkhau;
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
     }
 
-    public int getManv() {
-        return manv;
+    public int getMaNv() {
+        return maNv;
     }
 
-    public void setManv(int manv) {
-        this.manv = manv;
+    public void setMaNv(int maNv) {
+        this.maNv = maNv;
     }
 }

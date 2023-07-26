@@ -1,72 +1,80 @@
 package com.mobile.foodorderingproject.Model;
 
 public class Combo {
-    int macombo;
-    int mafood;
+    int maCombo, maDrink;
+    int maFood, maDessert;
+
+    int giaCombo;
+    String tenCombo;
+
+    String imgCombo;
 
     public Combo() {
     }
 
-    public Combo(int macombo, int mafood, int madrink, int madessert, int giacombo, String tencombo) {
-        this.macombo = macombo;
-        this.mafood = mafood;
-        this.madrink = madrink;
-        this.madessert = madessert;
-        this.giacombo = giacombo;
-        this.tencombo = tencombo;
+    public Combo(int macombo, int mafood, int madrink, int madessert, int giacombo, String tencombo, String imgcombo) {
+        this.maCombo = macombo;
+        this.maFood = mafood;
+        this.maDrink = madrink;
+        this.maDessert = madessert;
+        this.giaCombo = giacombo;
+        this.tenCombo = tencombo;
+        this.imgCombo = imgcombo;
     }
 
-    int madrink;
-    int madessert;
-
-    public int getMacombo() {
-        return macombo;
+    public String getImgCombo() {
+        return imgCombo;
     }
 
-    public void setMacombo(int macombo) {
-        this.macombo = macombo;
+    public void setImgCombo(String imgCombo) {
+        this.imgCombo = imgCombo;
     }
 
-    public int getMafood() {
-        return mafood;
+    public int getMaCombo() {
+        return maCombo;
     }
 
-    public void setMafood(int mafood) {
-        this.mafood = mafood;
+    public void setMaCombo(int maCombo) {
+        this.maCombo = maCombo;
     }
 
-    public int getMadrink() {
-        return madrink;
+    public int getMaFood() {
+        return maFood;
     }
 
-    public void setMadrink(int madrink) {
-        this.madrink = madrink;
+    public void setMaFood(int maFood) {
+        this.maFood = maFood;
     }
 
-    public int getMadessert() {
-        return madessert;
+    public int getMaDrink() {
+        return maDrink;
     }
 
-    public void setMadessert(int madessert) {
-        this.madessert = madessert;
+    public void setMaDrink(int maDrink) {
+        this.maDrink = maDrink;
     }
 
-    public int getGiacombo() {
-        return giacombo;
+    public int getMaDessert() {
+        return maDessert;
     }
 
-    public void setGiacombo(int giacombo) {
-        this.giacombo = giacombo;
+    public void setMaDessert(int maDessert) {
+        this.maDessert = maDessert;
     }
 
-    public String getTencombo() {
-        return tencombo;
+    public int getGiaCombo() {
+        return giaCombo;
     }
 
-    public void setTencombo(String tencombo) {
-        this.tencombo = tencombo;
+    public void setGiaCombo(int giaCombo) {
+        this.giaCombo = giaCombo;
     }
 
-    int giacombo;
-    String tencombo;
+    public String getTenCombo() {
+        return tenCombo;
+    }
+
+    public void setTenCombo(String tenCombo) {
+        this.tenCombo = tenCombo;
+    }
 }

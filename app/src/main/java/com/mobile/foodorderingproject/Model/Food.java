@@ -1,41 +1,49 @@
 package com.mobile.foodorderingproject.Model;
 
 public class Food {
-    int mafood, giafood;
+    int maFood, giaFood;
+    String tenFood, imgFood;
 
-    public Food(int mafood, int giafood, String tenfood) {
-        this.mafood = mafood;
-        this.giafood = giafood;
-        this.tenfood = tenfood;
+    public Food(int mafood, int giafood, String tenfood, String imgfood) {
+        this.maFood = mafood;
+        this.giaFood = giafood;
+        this.tenFood = tenfood;
+        this.imgFood = imgfood;
     }
 
-    public int getMafood() {
-        return mafood;
+    public String getImgFood() {
+        return imgFood;
     }
 
-    public void setMafood(int mafood) {
-        this.mafood = mafood;
+    public void setImgFood(String imgFood) {
+        this.imgFood = imgFood;
     }
 
-    public int getGiafood() {
-        return giafood;
+    public int getMaFood() {
+        return maFood;
     }
 
-    public void setGiafood(int giafood) {
-        this.giafood = giafood;
+    public void setMaFood(int maFood) {
+        this.maFood = maFood;
     }
 
-    public String getTenfood() {
-        return tenfood;
+    public int getGiaFood() {
+        return giaFood;
     }
 
-    public void setTenfood(String tenfood) {
-        this.tenfood = tenfood;
+    public void setGiaFood(int giaFood) {
+        this.giaFood = giaFood;
+    }
+
+    public String getTenFood() {
+        return tenFood;
+    }
+
+    public void setTenFood(String tenFood) {
+        this.tenFood = tenFood;
     }
 
     public Food() {
     }
-
-    String tenfood;
 
 }

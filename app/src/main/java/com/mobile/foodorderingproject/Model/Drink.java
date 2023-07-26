@@ -1,40 +1,52 @@
 package com.mobile.foodorderingproject.Model;
 
 public class Drink {
+
+    int maDrink, giaDrink;
+    String tenDrink, imgDrink;
+
     public Drink() {
     }
 
-    public Drink(int madrink, int giadrink, String tendrink) {
-        this.madrink = madrink;
-        this.giadrink = giadrink;
-        this.tendrink = tendrink;
+    public Drink(int madrink, int giadrink, String tendrink, String imgdrink) {
+        this.maDrink = madrink;
+        this.giaDrink = giadrink;
+        this.tenDrink = tendrink;
+        this.imgDrink = imgdrink;
     }
 
-    public int getMadrink() {
-        return madrink;
+    public String getImgDrink() {
+        return imgDrink;
     }
 
-    public void setMadrink(int madrink) {
-        this.madrink = madrink;
+    public void setImgDrink(String imgDrink) {
+        this.imgDrink = imgDrink;
     }
 
-    public int getGiadrink() {
-        return giadrink;
+    public int getMaDrink() {
+        return maDrink;
     }
 
-    public void setGiadrink(int giadrink) {
-        this.giadrink = giadrink;
+    public void setMaDrink(int maDrink) {
+        this.maDrink = maDrink;
     }
 
-    public String getTendrink() {
-        return tendrink;
+    public int getGiaDrink() {
+        return giaDrink;
     }
 
-    public void setTendrink(String tendrink) {
-        this.tendrink = tendrink;
+    public void setGiaDrink(int giaDrink) {
+        this.giaDrink = giaDrink;
     }
 
-    int madrink, giadrink;
-    String tendrink;
+    public String getTenDrink() {
+        return tenDrink;
+    }
+
+    public void setTenDrink(String tenDrink) {
+        this.tenDrink = tenDrink;
+    }
+
+
 
 }

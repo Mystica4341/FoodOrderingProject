@@ -1,39 +1,48 @@
 package com.mobile.foodorderingproject.Model;
 
 public class Dessert {
-    int madessert, giadessert;
-    String tendessert;
+    int maDessert, giaDessert;
+    String tenDessert, imgDessert;
 
-    public int getMadessert() {
-        return madessert;
+    public int getMaDessert() {
+        return maDessert;
     }
 
-    public Dessert(int madessert, int giadessert, String tendessert) {
-        this.madessert = madessert;
-        this.giadessert = giadessert;
-        this.tendessert = tendessert;
+    public Dessert(int madessert, int giadessert, String tendessert, String imgdessert) {
+        this.maDessert = madessert;
+        this.giaDessert = giadessert;
+        this.tenDessert = tendessert;
+        this.imgDessert = imgdessert;
+    }
+
+    public String getImgDessert() {
+        return imgDessert;
+    }
+
+    public void setImgDessert(String imgDessert) {
+        this.imgDessert = imgDessert;
     }
 
     public Dessert() {
     }
 
-    public void setMadessert(int madessert) {
-        this.madessert = madessert;
+    public void setMaDessert(int maDessert) {
+        this.maDessert = maDessert;
     }
 
-    public int getGiadessert() {
-        return giadessert;
+    public int getGiaDessert() {
+        return giaDessert;
     }
 
-    public void setGiadessert(int giadessert) {
-        this.giadessert = giadessert;
+    public void setGiaDessert(int giaDessert) {
+        this.giaDessert = giaDessert;
     }
 
-    public String getTendessert() {
-        return tendessert;
+    public String getTenDessert() {
+        return tenDessert;
     }
 
-    public void setTendessert(String tendessert) {
-        this.tendessert = tendessert;
+    public void setTenDessert(String tenDessert) {
+        this.tenDessert = tenDessert;
     }
 }

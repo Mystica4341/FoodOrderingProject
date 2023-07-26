@@ -1,57 +1,57 @@
 package com.mobile.foodorderingproject.Model;
 
 public class HoaDon {
-    int mahoadon, manhanvien, maban, tongtien;
-    String thoigian;
+    int maHoaDon, maNhanVien, maBan, tongTien;
+    String thoiGian;
 
     public HoaDon() {
     }
 
-    public int getMahoadon() {
-        return mahoadon;
+    public int getMaHoaDon() {
+        return maHoaDon;
     }
 
-    public void setMahoadon(int mahoadon) {
-        this.mahoadon = mahoadon;
+    public void setMaHoaDon(int maHoaDon) {
+        this.maHoaDon = maHoaDon;
     }
 
-    public int getManhanvien() {
-        return manhanvien;
+    public int getMaNhanVien() {
+        return maNhanVien;
     }
 
-    public void setManhanvien(int manhanvien) {
-        this.manhanvien = manhanvien;
+    public void setMaNhanVien(int maNhanVien) {
+        this.maNhanVien = maNhanVien;
     }
 
-    public int getMaban() {
-        return maban;
+    public int getMaBan() {
+        return maBan;
     }
 
-    public void setMaban(int maban) {
-        this.maban = maban;
+    public void setMaBan(int maBan) {
+        this.maBan = maBan;
     }
 
-    public int getTongtien() {
-        return tongtien;
+    public int getTongTien() {
+        return tongTien;
     }
 
-    public void setTongtien(int tongtien) {
-        this.tongtien = tongtien;
+    public void setTongTien(int tongTien) {
+        this.tongTien = tongTien;
     }
 
-    public String getThoigian() {
-        return thoigian;
+    public String getThoiGian() {
+        return thoiGian;
     }
 
-    public void setThoigian(String thoigian) {
-        this.thoigian = thoigian;
+    public void setThoiGian(String thoiGian) {
+        this.thoiGian = thoiGian;
     }
 
     public HoaDon(int mahoadon, int manhanvien, int maban, int tongtien, String thoigian) {
-        this.mahoadon = mahoadon;
-        this.manhanvien = manhanvien;
-        this.maban = maban;
-        this.tongtien = tongtien;
-        this.thoigian = thoigian;
+        this.maHoaDon = mahoadon;
+        this.maNhanVien = manhanvien;
+        this.maBan = maban;
+        this.tongTien = tongtien;
+        this.thoiGian = thoigian;
     }
 }
