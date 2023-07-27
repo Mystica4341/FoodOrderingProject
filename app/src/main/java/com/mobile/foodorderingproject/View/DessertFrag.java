@@ -12,10 +12,10 @@ import com.mobile.foodorderingproject.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link DesertFrag#newInstance} factory method to
+ * Use the {@link DessertFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DesertFrag extends Fragment {
+public class DessertFrag extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class DesertFrag extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public DesertFrag() {
+    public DessertFrag() {
         // Required empty public constructor
     }
 
@@ -39,8 +39,8 @@ public class DesertFrag extends Fragment {
      * @return A new instance of fragment DesertFrag.
      */
     // TODO: Rename and change types and number of parameters
-    public static DesertFrag newInstance(String param1, String param2) {
-        DesertFrag fragment = new DesertFrag();
+    public static DessertFrag newInstance(String param1, String param2) {
+        DessertFrag fragment = new DessertFrag();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

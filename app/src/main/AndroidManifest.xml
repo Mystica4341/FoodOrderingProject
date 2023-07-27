@@ -19,10 +19,7 @@
             android:name=".View.LogIn_Activity"
             android:exported="false" />
         <activity
-            android:name=".mainpage_activity"
-            android:exported="false" />
-        <activity
-            android:name=".View.MainActivity"
+            android:name=".View.Menu_Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -18,7 +18,7 @@ import android.widget.FrameLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.mobile.foodorderingproject.R;
 
-public class MainActivity extends AppCompatActivity {
+public class Menu_Activity extends AppCompatActivity {
 
     Toolbar toolbar;
     FrameLayout frameLayout;
@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
                 } else if (id == R.id.drink) {
                     loadFragment(new DrinkFrag());
                     return true;
-                } else if (id == R.id.desert) {
-                    loadFragment(new DesertFrag());
+                } else if (id == R.id.dessert) {
+                    loadFragment(new DessertFrag());
                     return true;
                 } else if (id == R.id.combo) {
                     loadFragment(new ComboFrag() );

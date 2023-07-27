@@ -13,8 +13,8 @@ public class DrinkHandler extends SQLiteOpenHelper {
     private static final String PATH = "/data/data/com.mobile.foodorderingproject/database/FoodOrdering.db";
     private static final String TABLE_NAME = "Drink";
     private static final String MADRINK_COL = "MaDrink";
-    private static final String TENDRINK_COL = "TenDring";
-    private static final String GIADRINK_COL = "GiaDring";
+    private static final String TENDRINK_COL = "TenDrink";
+    private static final String GIADRINK_COL = "GiaDrink";
     public DrinkHandler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DB_NAME, factory, 1);
     }

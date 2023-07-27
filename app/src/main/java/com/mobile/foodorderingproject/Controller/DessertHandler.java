@@ -13,10 +13,10 @@ public class DessertHandler extends SQLiteOpenHelper {
     private static final String DB_NAME = "qlch";
     @SuppressLint("SdCardPath")
     private static final String PATH = "/data/data/com.mobile.foodorderingproject/database/FoodOrdering.db";
-    private static final String TABLE_NAME = "TrangMieng";
-    private static final String MATRANGMIENG_COL = "MaTrangMieng";
-    private static final String TENTRANGMIENG_COL = "TenTrangMieng";
-    private static final String GIATRANGMIENG_COL = "GiaTrangMieng";
+    private static final String TABLE_NAME = "Dessert";
+    private static final String MATRANGMIENG_COL = "MaDessert";
+    private static final String TENTRANGMIENG_COL = "TenDessert";
+    private static final String GIATRANGMIENG_COL = "GiaDessert";
     public DessertHandler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DB_NAME, factory, 1);
     }

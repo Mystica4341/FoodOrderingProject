@@ -3,9 +3,9 @@
 
     <group >
         <item
-            android:id="@+id/desert"
+            android:id="@+id/dessert"
             android:icon="@drawable/baseline_cake_24"
-            android:title="Deserts" />
+            android:title="Desserts" />
         <item
             android:id="@+id/food"
             android:icon="@drawable/dish_ic"
