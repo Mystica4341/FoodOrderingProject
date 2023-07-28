@@ -18,8 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            tools:openDrawer="start">
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,16 +42,17 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 app:headerLayout="@layout/header_nav"
-                app:menu="@menu/nav_menu" />
-        </androidx.drawerlayout.widget.DrawerLayout>
+                app:menu="@menu/nav_menu">
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            </com.google.android.material.navigation.NavigationView>
+        </androidx.drawerlayout.widget.DrawerLayout>
+        <Button
             android:id="@+id/btnCart"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_weight="1"
-            app:icon="@drawable/baseline_shopping_cart_24"
+            android:backgroundTint="@color/white"
+            android:drawableStart="@drawable/baseline_shopping_cart_24"
             android:text="Đặt hàng" />
 
     </LinearLayout>

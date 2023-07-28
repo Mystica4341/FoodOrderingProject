@@ -45,39 +45,27 @@ public class Menu_Activity extends AppCompatActivity {
         toolbar = (Toolbar)findViewById(R.id.toolbar);
     }
     private void addEvents(){
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.food){
-                    loadFragment(new FoodFrag());
-                    return true;
-                } else if (id == R.id.drink) {
-                    loadFragment(new DrinkFrag());
-                    return true;
-                } else if (id == R.id.dessert) {
-                    loadFragment(new DessertFrag());
-                    return true;
-                } else if (id == R.id.combo) {
-                    loadFragment(new ComboFrag() );
-                    return true;
-                }
-                return false;
+        navView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.food){
+                loadFragment(new FoodFrag());
+                return true;
+            } else if (id == R.id.drink) {
+                loadFragment(new DrinkFrag());
+                return true;
+            } else if (id == R.id.dessert) {
+                loadFragment(new DessertFrag());
+                return true;
+            } else if (id == R.id.combo) {
+                loadFragment(new ComboFrag());
+                return true;
             }
+            return false;
         });
-        btnCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadFragment(new ShoppingCartFrag());
-            }
-        });
+        btnCart.setOnClickListener(v -> loadFragment(new ShoppingCartFrag()));
     }
 
     public void loadFragment(Fragment fragment){
-        FragmentManager fm = getSupportFragmentManager();
-        //đẩy fragment tương ứng lên
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.frameLayout, fragment);
-        ft.commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment).commit();
     }
 }

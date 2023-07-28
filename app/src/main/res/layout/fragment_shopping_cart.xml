@@ -11,7 +11,7 @@
         android:orientation="vertical">
 
         <ListView
-            android:id="@+id/GridShopping"
+            android:id="@+id/lvShopping"
             android:layout_width="match_parent"
             android:layout_height="580dp"
             android:layout_weight="1">
@@ -22,7 +22,6 @@
             android:id="@+id/tvTongmon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left|center"
             android:layout_weight="1"
             android:textSize="50dp"
             android:text="Tổng món:" />
@@ -30,7 +29,6 @@
             android:id="@+id/tvTongtien"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left|center"
             android:layout_weight="1"
             android:textSize="50dp"
             android:text="Tổng tiền:" />
