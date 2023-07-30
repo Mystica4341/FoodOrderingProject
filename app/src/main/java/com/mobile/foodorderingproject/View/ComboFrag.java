@@ -3,12 +3,22 @@ package com.mobile.foodorderingproject.View;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.mobile.foodorderingproject.Adapter.CustomComboAdapter;
+import com.mobile.foodorderingproject.Model.Combo;
+import com.mobile.foodorderingproject.Model.LuuHoaDon;
 import com.mobile.foodorderingproject.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +26,12 @@ import com.mobile.foodorderingproject.R;
  * create an instance of this fragment.
  */
 public class ComboFrag extends Fragment {
-
+    ImageView imgMenu;
+    GridView gridCombo;
+    ArrayList<Combo> arrayListCombo;
+    CustomComboAdapter adapter;
+    TextView tvName, tvDesc, tvPrice, tvNums;
+    ImageButton btnMinus, btnPlus;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +76,31 @@ public class ComboFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_combo, container, false);
+        View view = inflater.inflate(R.layout.fragment_combo, container, false);
+        addControls(view);
+        adapter = new CustomComboAdapter(requireActivity(),arrayListCombo);
+        gridCombo.setAdapter(adapter);
+        return view;
+    }
+    public void addControls(View view){
+        btnMinus = (ImageButton)view.findViewById(R.id.btnMinus);
+        btnPlus = (ImageButton)view.findViewById(R.id.btnPlus);
+        tvDesc = (TextView)view.findViewById(R.id.tvDesc);
+        tvName = (TextView)view.findViewById(R.id.tvName);
+        tvPrice = (TextView)view.findViewById(R.id.tvPrice);
+        tvNums = (TextView)view.findViewById(R.id.tvNums);
+        imgMenu = (ImageView)view.findViewById(R.id.imgMenu);
+        gridCombo = (GridView)view.findViewById(R.id.gridCombo);
+    }
+    public void initData(){
+
+    }
+    public void addEvents(){
+
+    }
+    public void pushDataHoaDon(Bundle bundle, ArrayList<LuuHoaDon> arraylistLHD){
+        bundle.putParcelableArrayList("LuuHoaDon",arraylistLHD);
+        FragmentManager fm = getParentFragmentManager();
+        fm.setFragmentResult("keyMain",bundle);
     }
 }

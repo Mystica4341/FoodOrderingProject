@@ -1,6 +1,7 @@
 package com.mobile.foodorderingproject.Controller;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,6 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.mobile.foodorderingproject.Model.Combo;
+import com.mobile.foodorderingproject.Model.Dessert;
+
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class ComboHandler extends SQLiteOpenHelper {
@@ -21,6 +26,7 @@ public class ComboHandler extends SQLiteOpenHelper {
     private static final String MADOAN_COL = "MaFood";
     private static final String MADOUONG_COL = "MaDrink";
     private static final String MATRANGMIENG_COL = "MaDessert";
+    private static final String IMAGECOMBO_COL = "ImgCombo";
     static final String TABLE_DATA_FOOD = "Food";
     static final String TABLE_DATA_DRINK = "Drink";
     static final String TABLE_DATA_DESSERT = "Dessert";
@@ -31,14 +37,64 @@ public class ComboHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db = SQLiteDatabase.openDatabase(PATH, null,SQLiteDatabase.CREATE_IF_NECESSARY);
-        String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ( ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + MACOMBO_COL +" INTEGER NOT NULL UNIQUE, " + TENCOMBO_COL + " TEXT NOT NULL UNIQUE, " + GIACOMBO_COL + " INTEGER NOT NULL, " + MADOAN_COL + " INTERGER NOT NULL REFERENCES Food("+MADOAN_COL+"), " + MADOUONG_COL + " INTERGER NOT NULL REFERENCES Drink("+MADOUONG_COL+"), "+ MATRANGMIENG_COL + " INTERGER  NOT NULL REFERENCES Dessert("+MATRANGMIENG_COL+"))";
+        String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ( ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + MACOMBO_COL +" INTEGER NOT NULL UNIQUE, " + TENCOMBO_COL + " TEXT NOT NULL UNIQUE, " + GIACOMBO_COL + " INTEGER NOT NULL, " + MADOAN_COL + " INTERGER NOT NULL REFERENCES Food("+MADOAN_COL+"), " + MADOUONG_COL + " INTERGER NOT NULL REFERENCES Drink("+MADOUONG_COL+"), "+ MATRANGMIENG_COL + " INTERGER  NOT NULL REFERENCES Dessert("+MATRANGMIENG_COL+"), "+IMAGECOMBO_COL+" TEXT NOT NULL)";
         db.execSQL(sql);
         db.close();
     }
-
+    public void insertData(int maStaff, String tenCombo, int giaCombo, int maFood, int maDrink, int maDessert){
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null, SQLiteDatabase.OPEN_READWRITE);
+        ContentValues values = new ContentValues();
+        values.put(MACOMBO_COL, maStaff);
+        values.put(TENCOMBO_COL, tenCombo);
+        values.put(GIACOMBO_COL, giaCombo);
+        values.put(MADOAN_COL, maFood);
+        values.put(MADOUONG_COL, maDrink);
+        values.put(MATRANGMIENG_COL, maDessert);
+        db.insert(TABLE_NAME, null, values);
+        db.close();
+    }
+    public void updateData(Combo oldCB, Combo newCB)
+    {
+        SQLiteDatabase db=SQLiteDatabase.openDatabase(PATH,null,SQLiteDatabase.OPEN_READWRITE);
+        ContentValues values=new ContentValues();
+        values.put(MACOMBO_COL, newCB.getMaCombo());
+        values.put(TENCOMBO_COL, newCB.getTenCombo());
+        values.put(GIACOMBO_COL, newCB.getGiaCombo());
+        values.put(MADOAN_COL, newCB.getMaFood());
+        values.put(MADOUONG_COL, newCB.getMaDrink());
+        values.put(MATRANGMIENG_COL, newCB.getMaDessert());
+        values.put(IMAGECOMBO_COL, newCB.getImgCombo());
+        db.update(TABLE_NAME,values, MATRANGMIENG_COL+"=?",
+                new String[]{String.valueOf(oldCB.getMaDessert())});
+        db.close();
+    }
+    public void deleteData(int maCombo) {
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH,null,SQLiteDatabase.OPEN_READWRITE);
+        db.delete(TABLE_NAME, MACOMBO_COL + " =?",
+                new String[]{String.valueOf(maCombo)});
+        db.close();
+    }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+    public ArrayList<Combo> loadData(){
+        ArrayList<Combo> kq = new ArrayList<>();
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null, SQLiteDatabase.CREATE_IF_NECESSARY);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
+        cursor.moveToFirst();
+        do {
+            Combo cb = new Combo();
+            cb.setMaCombo(cursor.getInt(0));
+            cb.setTenCombo(cursor.getString(1));
+            cb.setGiaCombo(cursor.getInt(2));
+            cb.setMaFood(cursor.getInt(3));
+            cb.setMaDrink(cursor.getInt(4));
+            cb.setMaDessert(cursor.getInt(5));
+            cb.setImgCombo(cursor.getString(6));
+            kq.add(cb);
+        }while (cursor.moveToNext());
+        return kq;
     }
     public String descFoodCombo(int maFood, int maCombo){
         String result = "";

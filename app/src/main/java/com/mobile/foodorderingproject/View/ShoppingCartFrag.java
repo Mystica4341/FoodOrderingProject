@@ -7,8 +7,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
+import com.mobile.foodorderingproject.Adapter.CustomShoppingCartAdapter;
+import com.mobile.foodorderingproject.Model.LuuHoaDon;
 import com.mobile.foodorderingproject.R;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +26,11 @@ import com.mobile.foodorderingproject.R;
  * create an instance of this fragment.
  */
 public class ShoppingCartFrag extends Fragment {
+    ListView lvShopping;
+    TextView tvTongMon, tvTongTien;
+    Button btnAdd, btnDelete, btnConfirm;
+    CustomShoppingCartAdapter adapter;
+    ArrayList<LuuHoaDon> arrayListLuuHoaDon;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +76,28 @@ public class ShoppingCartFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shopping_cart, container, false);
+        View view = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
+        addControls(view);
+        arrayListLuuHoaDon = initData();
+        adapter = new CustomShoppingCartAdapter(requireActivity(),R.layout.item_shopping_cart_layout,arrayListLuuHoaDon);
+        lvShopping.setAdapter(adapter);
+        return view;
+    }
+    public void addControls(View view){
+        btnAdd = (Button)view.findViewById(R.id.btnAdd);
+        btnConfirm=(Button)view.findViewById(R.id.btnConfirm);
+        btnDelete=(Button)view.findViewById(R.id.btnDelete);
+        lvShopping=(ListView)view.findViewById(R.id.lvShopping);
+        tvTongMon=(TextView)view.findViewById(R.id.tvTongMon);
+        tvTongTien=(TextView) view.findViewById(R.id.tvTongTien);
+    }
+    public ArrayList<LuuHoaDon> initData(){
+        ArrayList<LuuHoaDon> lsData = new ArrayList<>();
+        LuuHoaDon lhd = new LuuHoaDon();
+        lsData.add(lhd);
+        return lsData;
+    }
+    public void addEvents(){
+
     }
 }

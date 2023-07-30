@@ -18,6 +18,7 @@ import java.util.List;
 public class CustomComboAdapter extends BaseAdapter {
     List<Combo> lsCombo;
     ComboHandler comboHandler;
+    Context context;
     private final LayoutInflater layoutInflater;
 
 
@@ -79,9 +80,10 @@ public class CustomComboAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public CustomComboAdapter(List<Combo> lsCombo, LayoutInflater layoutInflater) {
+    public CustomComboAdapter(Context aContext, List<Combo> lsCombo) {
+        this.context = aContext;
         this.lsCombo = lsCombo;
-        this.layoutInflater = layoutInflater;
+        layoutInflater = LayoutInflater.from(aContext);
     }
 
     public int getMipMapResIdByName(String resName, Context context){

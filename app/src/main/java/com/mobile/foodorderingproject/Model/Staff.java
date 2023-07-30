@@ -1,17 +1,17 @@
 package com.mobile.foodorderingproject.Model;
 
-public class NhanVien {
+public class Staff {
     String tenNv, taiKhoan, matKhau;
     int maNv;
 
-    public NhanVien(String tennv, String taikhoan, String matkhau, int manv) {
+    public Staff(String tennv, String taikhoan, String matkhau, int manv) {
         this.tenNv = tennv;
         this.taiKhoan = taikhoan;
         this.matKhau = matkhau;
         this.maNv = manv;
     }
 
-    public NhanVien() {
+    public Staff() {
     }
 
     public String getTenNv() {

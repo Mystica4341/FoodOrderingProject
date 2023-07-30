@@ -6,7 +6,7 @@
     tools:context=".View.ComboFrag">
 
     <GridView
-        android:id="@+id/GridCombo"
+        android:id="@+id/gridCombo"
         android:layout_width="match_parent"
         android:numColumns="3"
         android:layout_height="match_parent" />
