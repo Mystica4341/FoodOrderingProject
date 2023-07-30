@@ -6,7 +6,7 @@
     tools:context=".View.FoodFrag">
 
     <GridView
-        android:id="@+id/GridFood"
+        android:id="@+id/gridFood"
         android:layout_width="match_parent"
         android:numColumns="3"
         android:layout_height="match_parent" />

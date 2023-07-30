@@ -7,6 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.mobile.foodorderingproject.R;
 
@@ -16,7 +21,9 @@ import com.mobile.foodorderingproject.R;
  * create an instance of this fragment.
  */
 public class FoodFrag extends Fragment {
-
+    ImageButton btnImgPlus, btnImgMinus;
+    TextView tvNums, tvPrice, tvName;
+    GridView gridFood;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -71,5 +78,9 @@ public class FoodFrag extends Fragment {
 
 
         return view;
+
+    }
+    public void addControls(View view){
+
     }
 }
