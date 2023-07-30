@@ -12,12 +12,13 @@ import android.widget.TextView;
 import com.mobile.foodorderingproject.Model.Dessert;
 import com.mobile.foodorderingproject.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomDessertAdapter extends BaseAdapter {
-    List<Dessert> lsDessert;
+    Context context;
+    ArrayList<Dessert> lsDessert;
     private final LayoutInflater layoutInflater;
-
 
     @Override
     public int getCount() {
@@ -52,18 +53,19 @@ public class CustomDessertAdapter extends BaseAdapter {
         //Truyền data lên view
         Dessert dessert = this.lsDessert.get(position);
         holder.nameView.setText(dessert.getTenDessert());
-        holder.priceView.setText(dessert.getGiaDessert());
-        int imageId = this.getMipMapResIdByName(dessert.getImgDessert(), convertView.getContext());
+        holder.priceView.setText(String.valueOf(dessert.getGiaDessert()));
+        int imageId = this.getMipMapResIdByName(dessert.getImgDessert());
         holder.menuView.setImageResource(imageId);
         return convertView;
     }
 
-    public CustomDessertAdapter(List<Dessert> lsDessert, LayoutInflater layoutInflater) {
+    public CustomDessertAdapter(Context aContext,ArrayList<Dessert>lsDessert) {
         this.lsDessert = lsDessert;
-        this.layoutInflater = layoutInflater;
+        this.layoutInflater=LayoutInflater.from(aContext);
+        this.context=aContext;
     }
 
-    public int getMipMapResIdByName(String resName, Context context){
+    public int getMipMapResIdByName(String resName){
         String pkgName = context.getPackageName();
         int ResId = context.getResources().getIdentifier(resName, "mipmap", pkgName);
         Log.i("CustomGridView", "Res Name: "+ resName+"==> Res ID = "+ ResId);
