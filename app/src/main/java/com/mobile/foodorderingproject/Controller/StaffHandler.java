@@ -89,6 +89,9 @@ public class StaffHandler extends SQLiteOpenHelper {
         }while (cursor.moveToNext());
         return kq;
     }
+    public void findStaff(){
+
+    }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
