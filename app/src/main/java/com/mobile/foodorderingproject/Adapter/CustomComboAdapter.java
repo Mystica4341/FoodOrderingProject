@@ -13,10 +13,11 @@ import com.mobile.foodorderingproject.Model.Combo;
 import com.mobile.foodorderingproject.R;
 import com.mobile.foodorderingproject.Controller.ComboHandler;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class CustomComboAdapter extends BaseAdapter {
-    List<Combo> lsCombo;
+    ArrayList<Combo> arrayListCombo;
+
     ComboHandler comboHandler;
     Context context;
     private final LayoutInflater layoutInflater;
@@ -24,12 +25,12 @@ public class CustomComboAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return lsCombo.size();
+        return arrayListCombo.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return lsCombo.get(position);
+        return arrayListCombo.get(position);
     }
 
     @Override
@@ -43,7 +44,7 @@ public class CustomComboAdapter extends BaseAdapter {
         String desc;
         //Tạo view Grid
         if (convertView == null){
-            convertView = layoutInflater.inflate(R.layout.menu_food_drink_dessert_layout, null);
+            convertView = layoutInflater.inflate(R.layout.menu_combo_layout, null);
             holder = new CustomComboAdapter.ViewHolder();
             holder.menuView = (ImageView) convertView.findViewById(R.id.imgMenu);
             holder.nameView = (TextView) convertView.findViewById(R.id.tvName);
@@ -55,35 +56,37 @@ public class CustomComboAdapter extends BaseAdapter {
             holder = (CustomComboAdapter.ViewHolder) convertView.getTag();
         }
         //Truyền data lên view
-        Combo combo = this.lsCombo.get(position);
+        Combo combo = this.arrayListCombo.get(position);
         holder.nameView.setText(combo.getTenCombo());
-        holder.priceView.setText(combo.getGiaCombo());
+        holder.priceView.setText(String.valueOf(combo.getGiaCombo()));
         int imageId = this.getMipMapResIdByName(combo.getImgCombo(), convertView.getContext());
-        if (String.valueOf(combo.getMaDrink()) == null)
-            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
-        else if (String.valueOf(combo.getMaFood()) == null)
-            desc = comboHandler.descDrinkCombo(combo.getMaDrink(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
-        else if (String.valueOf(combo.getMaDessert()) == null)
-            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDrink(),combo.getMaCombo());
-        else if (String.valueOf(combo.getMaDrink()) == null && String.valueOf(combo.getMaFood()) == null)
-            desc = comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
-        else if (String.valueOf(combo.getMaDrink()) == null && String.valueOf(combo.getMaDessert()) == null)
-            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo());
-        else if (String.valueOf(combo.getMaFood()) == null && String.valueOf(combo.getMaDessert()) == null)
-            desc = comboHandler.descDrinkCombo(combo.getMaDrink(),combo.getMaCombo());
-        else if (String.valueOf(combo.getMaFood()) == null && String.valueOf(combo.getMaDessert()) == null && String.valueOf(combo.getMaDrink()) == null)
-            desc = null;
-        else
-            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo()) + "\n" +comboHandler.descDrinkCombo(combo.getMaDrink(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
-        holder.descView.setText(desc);
+//        if (combo.getMaDrink() == 0)
+//            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
+//        else if (combo.getMaFood() == 0)
+//            desc = comboHandler.descDrinkCombo(combo.getMaDrink(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
+//        else if (combo.getMaDessert() == 0)
+//            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDrink(),combo.getMaCombo());
+//        else if (combo.getMaDrink() == 0 && combo.getMaFood() == 0)
+//            desc = comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
+//        else if (combo.getMaDrink() == 0 && combo.getMaDessert() == 0)
+//            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo());
+//        else if (combo.getMaFood() == 0 && combo.getMaDessert() == 0)
+//            desc = comboHandler.descDrinkCombo(combo.getMaDrink(),combo.getMaCombo());
+//        else if (combo.getMaFood() == 0 && combo.getMaDessert() == 0 && combo.getMaDrink() == 0)
+//            desc = null;
+//        else
+//            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo())
+//                    + "\n" +comboHandler.descDrinkCombo(combo.getMaDrink(),combo.getMaCombo())
+//                    + "\n" + comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
+        holder.descView.setText(combo.getTenCombo());
         holder.menuView.setImageResource(imageId);
         return convertView;
     }
 
-    public CustomComboAdapter(Context aContext, List<Combo> lsCombo) {
+    public CustomComboAdapter(Context aContext, ArrayList<Combo> lsCombo) {
         this.context = aContext;
-        this.lsCombo = lsCombo;
-        layoutInflater = LayoutInflater.from(aContext);
+        this.arrayListCombo = lsCombo;
+        this.layoutInflater = LayoutInflater.from(aContext);
     }
 
     public int getMipMapResIdByName(String resName, Context context){

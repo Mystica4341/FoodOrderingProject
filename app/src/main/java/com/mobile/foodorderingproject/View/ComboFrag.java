@@ -1,5 +1,6 @@
 package com.mobile.foodorderingproject.View;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,12 +9,15 @@ import androidx.fragment.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mobile.foodorderingproject.Adapter.CustomComboAdapter;
+import com.mobile.foodorderingproject.Controller.ComboHandler;
 import com.mobile.foodorderingproject.Model.Combo;
 import com.mobile.foodorderingproject.Model.LuuHoaDon;
 import com.mobile.foodorderingproject.R;
@@ -28,10 +32,13 @@ import java.util.ArrayList;
 public class ComboFrag extends Fragment {
     ImageView imgMenu;
     GridView gridCombo;
+    SQLiteDatabase db;
     ArrayList<Combo> arrayListCombo;
     CustomComboAdapter adapter;
     TextView tvName, tvDesc, tvPrice, tvNums;
     ImageButton btnMinus, btnPlus;
+
+    ComboHandler comboHandler;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -72,13 +79,22 @@ public class ComboFrag extends Fragment {
         }
     }
 
+    public ArrayList<Combo> initData(){
+        ArrayList<Combo> lsData = new ArrayList<>();
+        Combo combo = new Combo();
+        lsData.add(combo);
+        return(lsData);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_combo, container, false);
         addControls(view);
-        adapter = new CustomComboAdapter(requireActivity(),arrayListCombo);
+        arrayListCombo = initData();
+        ComboActive();
+        adapter = new CustomComboAdapter(requireActivity(), arrayListCombo);
         gridCombo.setAdapter(adapter);
         return view;
     }
@@ -92,9 +108,6 @@ public class ComboFrag extends Fragment {
         imgMenu = (ImageView)view.findViewById(R.id.imgMenu);
         gridCombo = (GridView)view.findViewById(R.id.gridCombo);
     }
-    public void initData(){
-
-    }
     public void addEvents(){
 
     }
@@ -102,5 +115,18 @@ public class ComboFrag extends Fragment {
         bundle.putParcelableArrayList("LuuHoaDon",arraylistLHD);
         FragmentManager fm = getParentFragmentManager();
         fm.setFragmentResult("keyMain",bundle);
+    }
+
+    public void load(){
+        arrayListCombo = ComboHandler.loadData();
+        adapter = new CustomComboAdapter(requireActivity(),arrayListCombo);
+        gridCombo.setAdapter(adapter);
+    }
+
+    public void ComboActive(){
+        comboHandler = new ComboHandler(requireActivity(),ComboHandler.DB_NAME,null,1);
+        comboHandler.onCreate(db);
+        comboHandler.initData();
+        load();
     }
 }

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ComboHandler extends SQLiteOpenHelper {
-    private static final String DB_NAME = "qlch";
+    public static final String DB_NAME = "qlch";
     @SuppressLint("SdCardPath")
     private static final String PATH = "/data/data/com.mobile.foodorderingproject/database/FoodOrdering.db";
     private static final String TABLE_NAME = "Combo";
@@ -53,6 +53,22 @@ public class ComboHandler extends SQLiteOpenHelper {
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
+    public void initData(){
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null, SQLiteDatabase.CREATE_IF_NECESSARY);
+        String sql1 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+MACOMBO_COL+","+TENCOMBO_COL+
+                ","+ GIACOMBO_COL+","+ MADOAN_COL+","+ MADOUONG_COL+
+                ","+ MATRANGMIENG_COL+","+ IMAGECOMBO_COL+") VALUES ('1','Combo hạnh phúc','120000','1','null','3','ratatouille')";
+        db.execSQL(sql1);
+//        String sql2 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+MACOMBO_COL+ "," +TENCOMBO_COL+
+//                ","+ GIACOMBO_COL+","+ MADOAN_COL+","+ MADOUONG_COL+
+//                ","+ MATRANGMIENG_COL+","+ IMAGECOMBO_COL+") VALUES (2,'Combo gia đình',15000,2,1,null,null)";
+//        db.execSQL(sql2);
+//        String sql3 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+MACOMBO_COL+ "," +TENCOMBO_COL+
+//                ","+ GIACOMBO_COL+","+ MADOAN_COL+","+ MADOUONG_COL+
+//                ","+ MATRANGMIENG_COL+","+ IMAGECOMBO_COL+") VALUES (3,'Combo vạn thọ',110000,1,3,null,null)";
+//        db.execSQL(sql3);
+        db.close();
+    }
     public void updateData(Combo oldCB, Combo newCB)
     {
         SQLiteDatabase db=SQLiteDatabase.openDatabase(PATH,null,SQLiteDatabase.OPEN_READWRITE);
@@ -78,20 +94,20 @@ public class ComboHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-    public ArrayList<Combo> loadData(){
+    public static ArrayList<Combo> loadData(){
         ArrayList<Combo> kq = new ArrayList<>();
         SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null, SQLiteDatabase.CREATE_IF_NECESSARY);
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
         cursor.moveToFirst();
         do {
             Combo cb = new Combo();
-            cb.setMaCombo(cursor.getInt(0));
-            cb.setTenCombo(cursor.getString(1));
-            cb.setGiaCombo(cursor.getInt(2));
-            cb.setMaFood(cursor.getInt(3));
-            cb.setMaDrink(cursor.getInt(4));
-            cb.setMaDessert(cursor.getInt(5));
-            cb.setImgCombo(cursor.getString(6));
+            cb.setMaCombo(cursor.getInt(1));
+            cb.setTenCombo(cursor.getString(2));
+            cb.setGiaCombo(cursor.getInt(3));
+            cb.setMaFood(cursor.getInt(4));
+            cb.setMaDrink(cursor.getInt(5));
+            cb.setMaDessert(cursor.getInt(6));
+            cb.setImgCombo(cursor.getString(7));
             kq.add(cb);
         }while (cursor.moveToNext());
         return kq;
