@@ -12,10 +12,11 @@ import android.widget.TextView;
 import com.mobile.foodorderingproject.Model.Food;
 import com.mobile.foodorderingproject.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomFoodAdapter extends BaseAdapter {
-
+Context context;
     List<Food> lsFood;
     private final LayoutInflater layoutInflater;
 
@@ -59,9 +60,10 @@ public class CustomFoodAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public CustomFoodAdapter(List<Food> lsFood, LayoutInflater layoutInflater) {
+    public CustomFoodAdapter(Context aContext, ArrayList<Food> lsFood) {
         this.lsFood = lsFood;
-        this.layoutInflater = layoutInflater;
+        this.layoutInflater = LayoutInflater.from(aContext);
+       this.context = aContext;
     }
 
     public int getMipMapResIdByName(String resName, Context context){
