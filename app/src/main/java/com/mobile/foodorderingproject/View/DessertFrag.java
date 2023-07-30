@@ -83,16 +83,9 @@ public class DessertFrag extends Fragment {
         View view=inflater.inflate(R.layout.fragment_desert,container,false);
         addControls(view);
         DessertActive();
-        dessertArrayList=initData();
         adapter=new CustomDessertAdapter(requireActivity(),dessertArrayList);
         gridDessert.setAdapter(adapter);
         return view;
-    }
-    public ArrayList<Dessert> initData(){
-        ArrayList<Dessert> lsData=new ArrayList<>();
-        Dessert dessert=new Dessert();
-        lsData.add(dessert);
-        return lsData;
     }
     public void addControls(View view){
         gridDessert = (GridView) view.findViewById(R.id.gridDesert);
