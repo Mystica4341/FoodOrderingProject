@@ -54,8 +54,8 @@ Context context;
         //Truyền data lên view
         Food food = this.lsFood.get(position);
         holder.nameView.setText(food.getTenFood());
-        holder.priceView.setText(food.getGiaFood());
-        int imageId = this.getMipMapResIdByName(food.getImgFood(), convertView.getContext());
+        holder.priceView.setText(String.valueOf(food.getGiaFood()));
+        int imageId = this.getMipMapResIdByName(food.getImgFood());
         holder.menuView.setImageResource(imageId);
         return convertView;
     }
@@ -66,10 +66,9 @@ Context context;
        this.context = aContext;
     }
 
-    public int getMipMapResIdByName(String resName, Context context){
+    public int getMipMapResIdByName(String resName){
         String pkgName = context.getPackageName();
         int ResId = context.getResources().getIdentifier(resName, "mipmap", pkgName);
-        Log.i("CustomGridView", "Res Name: "+ resName+"==> Res ID = "+ ResId);
         return ResId;
     }
 

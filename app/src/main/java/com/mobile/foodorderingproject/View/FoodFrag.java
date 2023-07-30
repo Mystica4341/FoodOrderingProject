@@ -36,7 +36,7 @@ public class FoodFrag extends Fragment {
     SQLiteDatabase db;
     GridView gridFood;
     CustomFoodAdapter adapter;
-    ArrayList<Food> lsFood;
+    ArrayList<Food> lsFood=new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -86,7 +86,7 @@ public class FoodFrag extends Fragment {
 // Inflate the layout for this fragment
         addControls(view);
         FoodActive();
-        lsFood = initData();
+
         adapter = new CustomFoodAdapter(requireActivity(),
                lsFood);
         gridFood.setAdapter(adapter);
@@ -94,12 +94,7 @@ public class FoodFrag extends Fragment {
         return view;
 
     }
-    public ArrayList<Food> initData(){
-        ArrayList<Food> lsData = new ArrayList<>();
-        Food food = new Food();
-        lsData.add(food);
-        return lsData;
-    }
+
     public void addControls(View view){
         gridFood = (GridView) view.findViewById(R.id.gridFood);
         btnImgPlus=(ImageButton) view.findViewById(R.id.btnImgPlus);
@@ -110,8 +105,7 @@ public class FoodFrag extends Fragment {
     }
     public void load(){
         lsFood = FoodHandler.loadData();
-        adapter = new CustomFoodAdapter(requireActivity(),
-                lsFood);
+        adapter = new CustomFoodAdapter(requireActivity(), lsFood);
         gridFood.setAdapter(adapter);
     }
     public void FoodActive(){

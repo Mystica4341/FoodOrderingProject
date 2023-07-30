@@ -29,7 +29,7 @@ public class FoodHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db = SQLiteDatabase.openDatabase(PATH, null,SQLiteDatabase.CREATE_IF_NECESSARY);
-        String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" + MAFOOD_COL +" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, " + TENFOOD_COL + " TEXT NOT NULL, " + GIAFOOD_COL + " INTEGER NOT NULL, "+IMAGEFOOD_COL+" TEXT NOT NULL)";
+        String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" + MAFOOD_COL +" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, " + TENFOOD_COL + " TEXT NOT NULL UNIQUE, " + GIAFOOD_COL + " INTEGER NOT NULL, "+IMAGEFOOD_COL+" TEXT NOT NULL)";
         db.execSQL(sql);
         db.close();
     }
@@ -85,7 +85,7 @@ public class FoodHandler extends SQLiteOpenHelper {
         db.close();
     }
     public  static ArrayList<Food> loadData(){
-        ArrayList<Food> kq = new ArrayList<>();
+        ArrayList<Food> re = new ArrayList<>();
         SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null, SQLiteDatabase.CREATE_IF_NECESSARY);
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
         cursor.moveToFirst();
@@ -95,9 +95,9 @@ public class FoodHandler extends SQLiteOpenHelper {
             f.setTenFood(cursor.getString(1));
             f.setGiaFood(cursor.getInt(2));
             f.setImgFood(cursor.getString(3));
-            kq.add(f);
+            re.add(f);
         }while (cursor.moveToNext());
-        return kq;
+        return re;
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
