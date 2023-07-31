@@ -14,7 +14,7 @@ import com.mobile.foodorderingproject.Model.Drink;
 import java.util.ArrayList;
 
 public class DrinkHandler extends SQLiteOpenHelper {
-    private static final String DB_NAME = "qlch";
+    public static final String DB_NAME = "qlch";
     @SuppressLint("SdCardPath")
     private static final String PATH = "/data/data/com.mobile.foodorderingproject/database/FoodOrdering.db";
     private static final String TABLE_NAME = "Drink";
@@ -83,7 +83,7 @@ public class DrinkHandler extends SQLiteOpenHelper {
                 new String[]{String.valueOf(maDrink)});
         db.close();
     }
-    public ArrayList<Drink> loadData(){
+    public static ArrayList<Drink> loadData(){
         ArrayList<Drink> kq = new ArrayList<>();
         SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null, SQLiteDatabase.CREATE_IF_NECESSARY);
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);

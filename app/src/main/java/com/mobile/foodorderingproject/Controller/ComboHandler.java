@@ -115,7 +115,7 @@ public class ComboHandler extends SQLiteOpenHelper {
     public String descFoodCombo(int maFood, int maCombo){
         String result = "";
         SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null,SQLiteDatabase.OPEN_READONLY);
-        Cursor cursor = db.rawQuery("SELECT TenFood FROM " + TABLE_DATA_FOOD + " WHERE MaFood = ? and MaCombo = ?", new String[]{String.valueOf(maFood), String.valueOf(maCombo)});
+        Cursor cursor = db.rawQuery("SELECT TenFood FROM " + TABLE_DATA_FOOD + ','+ TABLE_NAME +  " WHERE MaFood = ? and MaCombo = ?", new String[]{String.valueOf(maFood), String.valueOf(maCombo)});
         cursor.moveToFirst();
         do{
             String temp2 = "";
@@ -138,7 +138,7 @@ public class ComboHandler extends SQLiteOpenHelper {
     public String descDrinkCombo(int maDrink, int maCombo){
         String result = "";
         SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null,SQLiteDatabase.OPEN_READONLY);
-        Cursor cursor = db.rawQuery("SELECT TenDrink FROM " + TABLE_DATA_DRINK + " WHERE MaDrink = ? and MaCombo = ?", new String[]{String.valueOf(maDrink), String.valueOf(maCombo)});
+        Cursor cursor = db.rawQuery("SELECT TenDrink FROM " + TABLE_DATA_DRINK+ ','+ TABLE_NAME + " WHERE MaDrink = ? and MaCombo = ?", new String[]{String.valueOf(maDrink), String.valueOf(maCombo)});
         cursor.moveToFirst();
         do{
             String temp2 = "";
@@ -161,7 +161,7 @@ public class ComboHandler extends SQLiteOpenHelper {
     public String descDessertCombo(int maDessert, int maCombo){
         String result = "";
         SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null,SQLiteDatabase.OPEN_READONLY);
-        Cursor cursor = db.rawQuery("SELECT TenDessert FROM " + TABLE_DATA_DESSERT + " WHERE MaDessert = ? and MaCombo = ?", new String[]{String.valueOf(maDessert), String.valueOf(maCombo)});
+        Cursor cursor = db.rawQuery("SELECT TenDessert FROM " + TABLE_DATA_DESSERT+ ','+ TABLE_NAME +  " WHERE MaDessert = ? and MaCombo = ?", new String[]{String.valueOf(maDessert), String.valueOf(maCombo)});
         cursor.moveToFirst();
         do{
             String temp2 = "";

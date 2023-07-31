@@ -60,25 +60,25 @@ public class CustomComboAdapter extends BaseAdapter {
         holder.nameView.setText(combo.getTenCombo());
         holder.priceView.setText(String.valueOf(combo.getGiaCombo()));
         int imageId = this.getMipMapResIdByName(combo.getImgCombo(), convertView.getContext());
-//        if (combo.getMaDrink() == 0)
-//            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
-//        else if (combo.getMaFood() == 0)
-//            desc = comboHandler.descDrinkCombo(combo.getMaDrink(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
-//        else if (combo.getMaDessert() == 0)
-//            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDrink(),combo.getMaCombo());
-//        else if (combo.getMaDrink() == 0 && combo.getMaFood() == 0)
-//            desc = comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
-//        else if (combo.getMaDrink() == 0 && combo.getMaDessert() == 0)
-//            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo());
-//        else if (combo.getMaFood() == 0 && combo.getMaDessert() == 0)
-//            desc = comboHandler.descDrinkCombo(combo.getMaDrink(),combo.getMaCombo());
-//        else if (combo.getMaFood() == 0 && combo.getMaDessert() == 0 && combo.getMaDrink() == 0)
-//            desc = null;
-//        else
-//            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo())
-//                    + "\n" +comboHandler.descDrinkCombo(combo.getMaDrink(),combo.getMaCombo())
-//                    + "\n" + comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
-        holder.descView.setText(combo.getTenCombo());
+        if (combo.getMaDrink() == 0)
+            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
+        else if (combo.getMaFood() == 0)
+            desc = comboHandler.descDrinkCombo(combo.getMaDrink(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
+        else if (combo.getMaDessert() == 0)
+            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDrink(),combo.getMaCombo());
+        else if (combo.getMaDrink() == 0 && combo.getMaFood() == 0)
+            desc = comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
+        else if (combo.getMaDrink() == 0 && combo.getMaDessert() == 0)
+            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo());
+        else if (combo.getMaFood() == 0 && combo.getMaDessert() == 0)
+            desc = comboHandler.descDrinkCombo(combo.getMaDrink(),combo.getMaCombo());
+        else if (combo.getMaFood() == 0 && combo.getMaDessert() == 0 && combo.getMaDrink() == 0)
+            desc = null;
+        else
+            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo())
+                    + "\n" +comboHandler.descDrinkCombo(combo.getMaDrink(),combo.getMaCombo())
+                    + "\n" + comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
+        holder.descView.setText(desc);
         holder.menuView.setImageResource(imageId);
         return convertView;
     }
