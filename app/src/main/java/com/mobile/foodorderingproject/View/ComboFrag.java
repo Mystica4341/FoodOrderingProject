@@ -86,7 +86,7 @@ public class ComboFrag extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_combo, container, false);
         addControls(view);
-        ComboActive();
+        load();
         return view;
     }
     public void addControls(View view){
@@ -114,10 +114,4 @@ public class ComboFrag extends Fragment {
         gridCombo.setAdapter(adapter);
     }
 
-    public void ComboActive(){
-        comboHandler = new ComboHandler(requireActivity(),ComboHandler.DB_NAME,null,1);
-        comboHandler.onCreate(db);
-        comboHandler.initData();
-        load();
-    }
 }

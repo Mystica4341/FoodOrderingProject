@@ -50,6 +50,8 @@ public class FoodHandler extends SQLiteOpenHelper {
         db.execSQL(sql6);
         String sql7 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+TENFOOD_COL+","+GIAFOOD_COL+","+IMAGEFOOD_COL+") VALUES ('Beef Wellington',3450000,'wellington')";
         db.execSQL(sql7);
+        String sql8 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+TENFOOD_COL+","+GIAFOOD_COL+","+IMAGEFOOD_COL+") VALUES ('Luxury Burger',3850000,'burger')";
+        db.execSQL(sql8);
     }
     public Food foodSearch(int maFood, ArrayList<Food> lsFood){
         for(Food a: lsFood)

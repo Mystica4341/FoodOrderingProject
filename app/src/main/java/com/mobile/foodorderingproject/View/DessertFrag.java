@@ -82,7 +82,7 @@ public class DessertFrag extends Fragment {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_desert,container,false);
         addControls(view);
-        DessertActive();
+        load();
         return view;
     }
     public void addControls(View view){
@@ -97,11 +97,5 @@ public class DessertFrag extends Fragment {
         dessertArrayList= DessertHandler.loadData();
         adapter=new CustomDessertAdapter(requireActivity(),dessertArrayList);
         gridDessert.setAdapter(adapter);
-    }
-    public void DessertActive(){
-        DessertHandler dessertHandler= new DessertHandler(requireActivity(),DessertHandler.DB_NAME,null,1);
-        dessertHandler.onCreate(db);
-        dessertHandler.initData();
-        load();
     }
 }

@@ -9,10 +9,13 @@
 
     <GridView
         android:id="@+id/gridDesert"
-        android:stretchMode="columnWidth"
-        android:numColumns="3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:numColumns="2"
+        android:padding="10dp"
+        android:background="#C6F5FB"
+        android:verticalSpacing="15dp"
+        android:horizontalSpacing="15dp"
+        android:layout_height="match_parent"  >
 
     </GridView>
 

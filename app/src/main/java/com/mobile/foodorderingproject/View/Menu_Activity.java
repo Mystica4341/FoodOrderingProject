@@ -1,21 +1,21 @@
 package com.mobile.foodorderingproject.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.mobile.foodorderingproject.Controller.ComboHandler;
+import com.mobile.foodorderingproject.Controller.DessertHandler;
+import com.mobile.foodorderingproject.Controller.DrinkHandler;
+import com.mobile.foodorderingproject.Controller.FoodHandler;
 import com.mobile.foodorderingproject.R;
 
 public class Menu_Activity extends AppCompatActivity {
@@ -26,6 +26,8 @@ public class Menu_Activity extends AppCompatActivity {
     NavigationView navView;
     Button btnCart;
 
+    SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class Menu_Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.open_nav,R.string.close_nav);
         toggle.syncState();
+        DBActive();
         addEvents();
     }
 
@@ -68,4 +71,20 @@ public class Menu_Activity extends AppCompatActivity {
     public void loadFragment(Fragment fragment){
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment).commit();
     }
+
+    public void DBActive(){
+        DrinkHandler drinkHandler= new DrinkHandler(this,DrinkHandler.DB_NAME,null,1);
+        drinkHandler.onCreate(db);
+        drinkHandler.initData();
+        FoodHandler foodHandler= new FoodHandler(this,FoodHandler.DB_NAME,null,1);
+        foodHandler.onCreate(db);
+        foodHandler.initData();
+        DessertHandler dessertHandler= new DessertHandler(this,DessertHandler.DB_NAME,null,1);
+        dessertHandler.onCreate(db);
+        dessertHandler.initData();
+        ComboHandler comboHandler= new ComboHandler(this,ComboHandler.DB_NAME,null,1);
+        comboHandler.onCreate(db);
+        comboHandler.initData();
+    }
+
 }

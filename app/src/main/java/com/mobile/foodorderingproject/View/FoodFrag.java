@@ -85,7 +85,7 @@ public class FoodFrag extends Fragment {
 
 // Inflate the layout for this fragment
         addControls(view);
-        FoodActive();
+        load();
         return view;
 
     }
@@ -102,11 +102,5 @@ public class FoodFrag extends Fragment {
         lsFood = FoodHandler.loadData();
         adapter = new CustomFoodAdapter(requireActivity(), lsFood);
         gridFood.setAdapter(adapter);
-    }
-    public void FoodActive(){
-        FoodHandler foodHandler= new FoodHandler(requireActivity(),FoodHandler.DB_NAME,null,1);
-        foodHandler.onCreate(db);
-        foodHandler.initData();
-        load();
     }
 }

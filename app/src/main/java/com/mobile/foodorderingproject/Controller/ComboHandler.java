@@ -57,12 +57,20 @@ public class ComboHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null, SQLiteDatabase.CREATE_IF_NECESSARY);
         String sql1 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+MACOMBO_COL+","+TENCOMBO_COL+
                 ","+ GIACOMBO_COL+","+ MADOAN_COL+","+ MADOUONG_COL+
-                ","+ MATRANGMIENG_COL+","+ IMAGECOMBO_COL+") VALUES ('1','Combo hạnh phúc','120000','1','null','3','ratatouille')";
+                ","+ MATRANGMIENG_COL+","+ IMAGECOMBO_COL+") VALUES (1,'Combo hủy diệt','1700000',6,'null',3,'pizzacombo')";
         db.execSQL(sql1);
-//        String sql2 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+MACOMBO_COL+ "," +TENCOMBO_COL+
-//                ","+ GIACOMBO_COL+","+ MADOAN_COL+","+ MADOUONG_COL+
-//                ","+ MATRANGMIENG_COL+","+ IMAGECOMBO_COL+") VALUES (2,'Combo gia đình',15000,2,1,null,null)";
-//        db.execSQL(sql2);
+        String sql2 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+MACOMBO_COL+","+TENCOMBO_COL+
+                ","+ GIACOMBO_COL+","+ MADOAN_COL+","+ MADOUONG_COL+
+                ","+ MATRANGMIENG_COL+","+ IMAGECOMBO_COL+") VALUES (2,'Combo thông tài',4800000, 1, 4,'null','ratatouille')";
+        db.execSQL(sql2);
+        String sql3 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+MACOMBO_COL+","+TENCOMBO_COL+
+                ","+ GIACOMBO_COL+","+ MADOAN_COL+","+ MADOUONG_COL+
+                ","+ MATRANGMIENG_COL+","+ IMAGECOMBO_COL+") VALUES (3,'Combo khổng lồ',2200000, 7,5,3,'beefwellcombo')";
+        db.execSQL(sql3);
+        String sql4 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+MACOMBO_COL+","+TENCOMBO_COL+
+                ","+ GIACOMBO_COL+","+ MADOAN_COL+","+ MADOUONG_COL+
+                ","+ MATRANGMIENG_COL+","+ IMAGECOMBO_COL+") VALUES (4,'Combo double cheese',2200000, 8,3,7,'burgercombo')";
+        db.execSQL(sql4);
 //        String sql3 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+MACOMBO_COL+ "," +TENCOMBO_COL+
 //                ","+ GIACOMBO_COL+","+ MADOAN_COL+","+ MADOUONG_COL+
 //                ","+ MATRANGMIENG_COL+","+ IMAGECOMBO_COL+") VALUES (3,'Combo vạn thọ',110000,1,3,null,null)";

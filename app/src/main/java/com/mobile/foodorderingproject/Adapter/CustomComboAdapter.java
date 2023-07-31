@@ -65,7 +65,7 @@ public class CustomComboAdapter extends BaseAdapter {
         else if (combo.getMaFood() == 0)
             desc = comboHandler.descDrinkCombo(combo.getMaDrink(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
         else if (combo.getMaDessert() == 0)
-            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDrink(),combo.getMaCombo());
+            desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo()) + "\n" + comboHandler.descDrinkCombo(combo.getMaDrink(),combo.getMaCombo());
         else if (combo.getMaDrink() == 0 && combo.getMaFood() == 0)
             desc = comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
         else if (combo.getMaDrink() == 0 && combo.getMaDessert() == 0)
