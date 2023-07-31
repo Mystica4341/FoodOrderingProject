@@ -26,9 +26,8 @@ public class ListTable extends AppCompatActivity {
     GridView gridTable;
     ArrayList<Table> arrayListTable = new ArrayList<>();
     CustomTableAdapter adapter;
-    
-    TextView tvTable;
 
+    String manv;
     SQLiteDatabase db;
 
 
@@ -38,6 +37,8 @@ public class ListTable extends AppCompatActivity {
         setContentView(R.layout.activity_list_table);
         gridTable = (GridView) findViewById(R.id.GridTable);
         DBActive();
+        Intent intent = getIntent();
+        manv = intent.getStringExtra("manv");
         addEvent();
     }
     
@@ -48,7 +49,8 @@ public class ListTable extends AppCompatActivity {
                 Table table = arrayListTable.get(position);
                 if (table.getTrangThai().equals("Available")) {
                     Intent intent = new Intent(ListTable.this, Menu_Activity.class);
-                    intent.putExtra("IDTable", table.getMaBan());
+                    intent.putExtra("IDTable", String.valueOf(table.getMaBan()));
+                    intent.putExtra("MaNV",manv);
                     startActivity(intent);
                 } else if (table.getTrangThai().equals("Unavailable")) {
                     Toast.makeText(ListTable.this, "Bàn đang được sử dụng", Toast.LENGTH_LONG).show();

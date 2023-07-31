@@ -90,13 +90,6 @@ public class ComboFrag extends Fragment {
         return view;
     }
     public void addControls(View view){
-        btnMinus = (ImageButton)view.findViewById(R.id.btnImgMinusCB);
-        btnPlus = (ImageButton)view.findViewById(R.id.btnImgPlusCB);
-        tvDesc = (TextView)view.findViewById(R.id.tvDesc);
-        tvName = (TextView)view.findViewById(R.id.tvName);
-        tvPrice = (TextView)view.findViewById(R.id.tvPrice);
-        tvNums = (TextView)view.findViewById(R.id.tvNumsCombo);
-        imgMenu = (ImageView)view.findViewById(R.id.imgMenu);
         gridCombo = (GridView)view.findViewById(R.id.gridCombo);
     }
 

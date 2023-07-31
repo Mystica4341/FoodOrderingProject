@@ -62,7 +62,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/btnImgMinusCB"
+                android:id="@+id/btnImgMinus"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -71,7 +71,7 @@
                 android:text="Button" />
 
             <TextView
-                android:id="@+id/tvNumsCombo"
+                android:id="@+id/tvNums"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
@@ -81,7 +81,7 @@
                 android:text="0" />
 
             <ImageButton
-                android:id="@+id/btnImgPlusCB"
+                android:id="@+id/btnImgPlus"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"

@@ -13,7 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mobile.foodorderingproject.Model.Dessert;
+import com.mobile.foodorderingproject.Model.ShoppingCart;
 import com.mobile.foodorderingproject.R;
+import com.mobile.foodorderingproject.View.ShoppingCartFrag;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,8 @@ import java.util.List;
 public class CustomDessertAdapter extends BaseAdapter {
     Context context;
     ArrayList<Dessert> lsDessert;
+    ShoppingCart shoppingCart;
+    ArrayList<ShoppingCart> arrayListShoppingCart = new ArrayList<>();
     private final LayoutInflater layoutInflater;
 
     @Override
@@ -67,6 +71,14 @@ public class CustomDessertAdapter extends BaseAdapter {
             public void onClick(View v) {
                 ((GridView)parent).performItemClick(v, position, 0);
                 holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText())+1));
+                String name = dessert.getTenDessert();
+                int soluongtruoc = Integer.parseInt((String) holder.numsView.getText())-1;
+                int soluong = Integer.parseInt((String) holder.numsView.getText());
+                int price = dessert.getGiaDessert()*soluong;
+                shoppingCart = new ShoppingCart(name, price, soluong);
+                arrayListShoppingCart.add(shoppingCart);
+                if(soluongtruoc > 0)
+                    arrayListShoppingCart.removeIf(shoppingCart -> shoppingCart.getTen().equals(name) && shoppingCart.getSoluong() == soluongtruoc);
             }
         });
         holder.btnImgMinus.setOnClickListener(new View.OnClickListener() {
@@ -75,10 +87,22 @@ public class CustomDessertAdapter extends BaseAdapter {
                 ((GridView)parent).performItemClick(v, position, 0);
                 if(Integer.parseInt((String) holder.numsView.getText()) <= 0)
                     holder.numsView.setText("0");
-                else
+                else{
                     holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText()) - 1));
+                    String name = dessert.getTenDessert();
+                    int soluongtruoc = Integer.parseInt((String) holder.numsView.getText())+1;
+                    int soluong = Integer.parseInt((String) holder.numsView.getText());
+                    int price = dessert.getGiaDessert()*soluong;
+                    shoppingCart = new ShoppingCart(name, price, soluong);
+                    arrayListShoppingCart.add(shoppingCart);
+                    if (soluong == 0)
+                        arrayListShoppingCart.removeIf(shoppingCart -> shoppingCart.getTen().equals(name));
+                    else if (soluongtruoc >= 0)
+                        arrayListShoppingCart.removeIf(shoppingCart -> shoppingCart.getTen().equals(name) && shoppingCart.getSoluong() == soluongtruoc);
+                }
             }
         });
+        ShoppingCartFrag.arrayListShoppingCartDessert = arrayListShoppingCart;
         return convertView;
     }
 

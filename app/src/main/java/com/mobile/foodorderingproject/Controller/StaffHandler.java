@@ -6,16 +6,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.Editable;
 
 import androidx.annotation.Nullable;
 
-import com.mobile.foodorderingproject.Model.Dessert;
 import com.mobile.foodorderingproject.Model.Staff;
 
 import java.util.ArrayList;
 
 public class StaffHandler extends SQLiteOpenHelper {
-    private static final String DB_NAME = "qlch";
+    public static final String DB_NAME = "qlch";
     @SuppressLint("SdCardPath")
     private static final String PATH = "/data/data/com.mobile.foodorderingproject/database/FoodOrdering.db";
     private static final String TABLE_NAME = "NhanVien";
@@ -50,11 +50,17 @@ public class StaffHandler extends SQLiteOpenHelper {
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
-    public Staff staffSearch(int maStaff, ArrayList<Staff> lsStaff){
+    public Staff staffSearch(String taikhoan, ArrayList<Staff> lsStaff){
         for (Staff a: lsStaff)
-            if(a.getMaNv()==maStaff)
+            if(a.getTaiKhoan().equals(taikhoan))
                 return a;
         return null;
+    }
+    public boolean confirmLogIn(String taikhoan, String matkhau, ArrayList<Staff> lsStaff){
+        for(Staff a: lsStaff)
+            if(a.getTaiKhoan().equals(taikhoan) && a.getMatKhau().equals(matkhau))
+                return true;
+        return false;
     }
     public void updateData(Staff oldS, Staff newS)
     {

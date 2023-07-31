@@ -13,8 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mobile.foodorderingproject.Model.Combo;
+import com.mobile.foodorderingproject.Model.ShoppingCart;
 import com.mobile.foodorderingproject.R;
 import com.mobile.foodorderingproject.Controller.ComboHandler;
+import com.mobile.foodorderingproject.View.ShoppingCartFrag;
 
 import java.util.ArrayList;
 
@@ -22,6 +24,8 @@ public class CustomComboAdapter extends BaseAdapter {
     ArrayList<Combo> arrayListCombo;
 
     Context context;
+    ShoppingCart shoppingCart;
+    ArrayList<ShoppingCart> arrayListShoppingCart = new ArrayList<>();
     private final LayoutInflater layoutInflater;
 
 
@@ -91,6 +95,14 @@ public class CustomComboAdapter extends BaseAdapter {
             public void onClick(View v) {
                 ((GridView)parent).performItemClick(v, position, 0);
                 holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText())+1));
+                String name = combo.getTenCombo();
+                int soluongtruoc = Integer.parseInt((String) holder.numsView.getText())-1;
+                int soluong = Integer.parseInt((String) holder.numsView.getText());
+                int price = combo.getGiaCombo()*soluong;
+                shoppingCart = new ShoppingCart(name, price, soluong);
+                arrayListShoppingCart.add(shoppingCart);
+                if(soluongtruoc > 0)
+                    arrayListShoppingCart.removeIf(shoppingCart -> shoppingCart.getTen().equals(name) && shoppingCart.getSoluong() == soluongtruoc);
             }
         });
         holder.btnImgMinus.setOnClickListener(new View.OnClickListener() {
@@ -99,11 +111,22 @@ public class CustomComboAdapter extends BaseAdapter {
                 ((GridView)parent).performItemClick(v, position, 0);
                 if(Integer.parseInt((String) holder.numsView.getText()) <= 0)
                     holder.numsView.setText("0");
-                else
+                else{
                     holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText()) - 1));
-
+                    String name = combo.getTenCombo();
+                    int soluongtruoc = Integer.parseInt((String) holder.numsView.getText())+1;
+                    int soluong = Integer.parseInt((String) holder.numsView.getText());
+                    int price = combo.getGiaCombo()*soluong;
+                    shoppingCart = new ShoppingCart(name, price, soluong);
+                    arrayListShoppingCart.add(shoppingCart);
+                    if (soluong == 0)
+                        arrayListShoppingCart.removeIf(shoppingCart -> shoppingCart.getTen().equals(name));
+                    else if (soluongtruoc >= 0)
+                        arrayListShoppingCart.removeIf(shoppingCart -> shoppingCart.getTen().equals(name) && shoppingCart.getSoluong() == soluongtruoc);
+                }
             }
         });
+        ShoppingCartFrag.arrayListShoppingCartCombo = arrayListShoppingCart;
         return convertView;
     }
 

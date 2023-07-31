@@ -1,12 +1,9 @@
 package com.mobile.foodorderingproject.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -14,8 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mobile.foodorderingproject.Model.Drink;
-import com.mobile.foodorderingproject.Model.Food;
+import com.mobile.foodorderingproject.Model.ShoppingCart;
 import com.mobile.foodorderingproject.R;
+import com.mobile.foodorderingproject.View.ShoppingCartFrag;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +21,8 @@ import java.util.List;
 public class CustomDrinkAdapter extends BaseAdapter {
     Context context;
     List<Drink> lsDrink;
+    ShoppingCart shoppingCart;
+    ArrayList<ShoppingCart> arrayListShoppingCart = new ArrayList<>();
     private final LayoutInflater layoutInflater;
 
     @Override
@@ -70,6 +70,14 @@ public class CustomDrinkAdapter extends BaseAdapter {
             public void onClick(View v) {
                 ((GridView)parent).performItemClick(v, position, 0);
                 holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText())+1));
+                String name = drink.getTenDrink();
+                int soluongtruoc = Integer.parseInt((String) holder.numsView.getText())-1;
+                int soluong = Integer.parseInt((String) holder.numsView.getText());
+                int price = drink.getGiaDrink()*soluong;
+                shoppingCart = new ShoppingCart(name, price, soluong);
+                arrayListShoppingCart.add(shoppingCart);
+                if(soluongtruoc > 0)
+                    arrayListShoppingCart.removeIf(shoppingCart -> shoppingCart.getTen().equals(name) && shoppingCart.getSoluong() == soluongtruoc);
             }
         });
         holder.btnImgMinus.setOnClickListener(new View.OnClickListener() {
@@ -78,10 +86,22 @@ public class CustomDrinkAdapter extends BaseAdapter {
                 ((GridView)parent).performItemClick(v, position, 0);
                 if(Integer.parseInt((String) holder.numsView.getText()) <= 0)
                     holder.numsView.setText("0");
-                else
+                else{
                     holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText()) - 1));
+                    String name = drink.getTenDrink();
+                    int soluongtruoc = Integer.parseInt((String) holder.numsView.getText())+1;
+                    int soluong = Integer.parseInt((String) holder.numsView.getText());
+                    int price = drink.getGiaDrink()*soluong;
+                    shoppingCart = new ShoppingCart(name, price, soluong);
+                    arrayListShoppingCart.add(shoppingCart);
+                    if (soluong == 0)
+                        arrayListShoppingCart.removeIf(shoppingCart -> shoppingCart.getTen().equals(name));
+                    else if (soluongtruoc >= 0)
+                        arrayListShoppingCart.removeIf(shoppingCart -> shoppingCart.getTen().equals(name) && shoppingCart.getSoluong() == soluongtruoc);
+                }
             }
         });
+        ShoppingCartFrag.arrayListShoppingCartDrink = arrayListShoppingCart;
         return convertView;
     }
 

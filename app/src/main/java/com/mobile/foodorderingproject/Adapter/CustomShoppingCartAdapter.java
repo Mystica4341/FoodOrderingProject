@@ -1,7 +1,7 @@
 package com.mobile.foodorderingproject.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.mobile.foodorderingproject.Model.LuuHoaDon;
 import com.mobile.foodorderingproject.Model.ShoppingCart;
 import com.mobile.foodorderingproject.R;
 
@@ -30,6 +29,7 @@ public class CustomShoppingCartAdapter extends ArrayAdapter {
         this.arrayListShoppingCart = objects;
     }
 
+    @SuppressLint("SetTextI18n")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -37,10 +37,9 @@ public class CustomShoppingCartAdapter extends ArrayAdapter {
         if (convertView == null){
             convertView = LayoutInflater.from(context).inflate(layoutItem,null);
         }
-
         TextView tvTen = (TextView) convertView.findViewById(R.id.tvTen);
         TextView tvGia = (TextView) convertView.findViewById(R.id.tvGia);
-        tvTen.setText(shoppingCart.getTen());
+        tvTen.setText(shoppingCart.getSoluong() + " " +shoppingCart.getTen());
         tvGia.setText(String.valueOf(shoppingCart.getGia()));
         return convertView;
     }

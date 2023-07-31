@@ -14,10 +14,10 @@ import com.mobile.foodorderingproject.Model.HoaDon;
 import java.util.ArrayList;
 
 public class HoaDonHandler extends SQLiteOpenHelper {
-    private static final String DB_NAME = "qlch";
+    public static final String DB_NAME = "qlch";
     @SuppressLint("SdCardPath")
     private static final String PATH = "/data/data/com.mobile.foodorderingproject/database/FoodOrdering.db";
-    private static final String TABLE_NAME = "NhanVien";
+    private static final String TABLE_NAME = "HoaDon";
     private static final String MAHOADON_COL = "MaHoaDon";
     private static final String MANHANVIEN_COL = "MaNhanVien";
     private static final String MABAN_COL = "MaBan";

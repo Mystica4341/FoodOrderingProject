@@ -57,7 +57,7 @@ public class ComboHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null, SQLiteDatabase.CREATE_IF_NECESSARY);
         String sql1 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+MACOMBO_COL+","+TENCOMBO_COL+
                 ","+ GIACOMBO_COL+","+ MADOAN_COL+","+ MADOUONG_COL+
-                ","+ MATRANGMIENG_COL+","+ IMAGECOMBO_COL+") VALUES (1,'Combo hủy diệt','1700000',6,'null',3,'pizzacombo')";
+                ","+ MATRANGMIENG_COL+","+ IMAGECOMBO_COL+") VALUES (1,'Combo hủy diệt',1700000,6,'null',3,'pizzacombo')";
         db.execSQL(sql1);
         String sql2 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+MACOMBO_COL+","+TENCOMBO_COL+
                 ","+ GIACOMBO_COL+","+ MADOAN_COL+","+ MADOUONG_COL+

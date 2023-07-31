@@ -35,13 +35,13 @@ public class Menu_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //Nhận ID table
         Intent intent = getIntent();
-        String idTable = intent.getStringExtra("IDTable");
+        ShoppingCartFrag.idTable = intent.getStringExtra("IDTable");
+        ShoppingCartFrag.maNV = intent.getStringExtra("MaNV");
         //Add component
         addControls();
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.open_nav,R.string.close_nav);
         toggle.syncState();
-        DBActive();
         addEvents();
     }
 
@@ -75,21 +75,6 @@ public class Menu_Activity extends AppCompatActivity {
 
     public void loadFragment(Fragment fragment){
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment).commit();
-    }
-
-    public void DBActive(){
-        DrinkHandler drinkHandler= new DrinkHandler(this,DrinkHandler.DB_NAME,null,1);
-        drinkHandler.onCreate(db);
-        drinkHandler.initData();
-        FoodHandler foodHandler= new FoodHandler(this,FoodHandler.DB_NAME,null,1);
-        foodHandler.onCreate(db);
-        foodHandler.initData();
-        DessertHandler dessertHandler= new DessertHandler(this,DessertHandler.DB_NAME,null,1);
-        dessertHandler.onCreate(db);
-        dessertHandler.initData();
-        ComboHandler comboHandler= new ComboHandler(this,ComboHandler.DB_NAME,null,1);
-        comboHandler.onCreate(db);
-        comboHandler.initData();
     }
 
 }

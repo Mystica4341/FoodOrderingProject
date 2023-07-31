@@ -93,11 +93,6 @@ public class DessertFrag extends Fragment {
     }
     public void addControls(View view){
         gridDessert = (GridView) view.findViewById(R.id.gridDesert);
-        btnImgPlus=(ImageButton) view.findViewById(R.id.btnImgPlus);
-        btnImgMinus=(ImageButton)view.findViewById(R.id.btnImgMinus);
-        tvNums=(TextView)view.findViewById(R.id.tvNums);
-        tvName=(TextView)view.findViewById(R.id.tvName);
-        tvPrice=(TextView) view.findViewById(R.id.tvPrice);
     }
     public void load(){
         dessertArrayList= DessertHandler.loadData();

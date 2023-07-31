@@ -12,11 +12,8 @@
         android:layout_width="876dp"
         android:layout_height="500dp"
         android:layout_gravity="center"
-        android:layout_marginTop="150dp"
-
         android:orientation="vertical">
         <TextView
-            android:id="@+id/textView4"
             android:layout_width="550dp"
             android:layout_height="142dp"
             android:layout_gravity="center"
@@ -54,7 +51,7 @@
                 android:textSize="30dp"
                 android:ems="10"
                 android:hint="PassWord"
-                android:inputType="text" />
+                android:inputType="textPassword" />
 
             <Button
                 android:id="@+id/btnLogIn"

@@ -4,7 +4,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +25,7 @@ import java.util.ArrayList;
  * Use the {@link FoodFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FoodFrag extends Fragment {
+public class FoodFrag extends Fragment{
     ImageButton btnImgPlus, btnImgMinus;
     TextView tvNums, tvPrice, tvName;
 
@@ -87,11 +86,6 @@ public class FoodFrag extends Fragment {
 
     public void addControls(View view){
         gridFood = (GridView) view.findViewById(R.id.gridFood);
-        btnImgPlus=(ImageButton) view.findViewById(R.id.btnImgPlus);
-        btnImgMinus=(ImageButton) view.findViewById(R.id.btnImgMinus);
-        tvNums=(TextView) view.findViewById(R.id.tvNums);
-        tvName=(TextView)view.findViewById(R.id.tvName);
-        tvPrice=(TextView) view.findViewById(R.id.tvPrice);
     }
     public void load(){
         lsFood = FoodHandler.loadData();
@@ -107,5 +101,4 @@ public class FoodFrag extends Fragment {
             }
         });
     }
-
 }
