@@ -14,8 +14,7 @@ import java.util.ArrayList;
 
 public class BanHandler extends SQLiteOpenHelper {
 
-
-    private static final String DB_NAME = "qlch";
+    public static final String DB_NAME = "qlch";
     @SuppressLint("SdCardPath")
     private static final String PATH = "/data/data/com.mobile.foodorderingproject/database/FoodOrdering.db";
     private static final String TABLE_NAME = "Ban";
@@ -29,20 +28,22 @@ public class BanHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db = SQLiteDatabase.openDatabase(PATH, null,SQLiteDatabase.CREATE_IF_NECESSARY);
-        String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" + MABAN_COL +" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, " + TRANGTHAI_COL + " TEXT NOT NULL UNIQUE)";
+        String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" + MABAN_COL +" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, " + TRANGTHAI_COL + " TEXT NOT NULL)";
         db.execSQL(sql);
         db.close();
     }
     public void initData(){
         SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH,null,SQLiteDatabase.CREATE_IF_NECESSARY);
-        String sql1 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+TRANGTHAI_COL+") VALUES ('Available')";
+        String sql1 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+ MABAN_COL +","+TRANGTHAI_COL+") VALUES (1,'Available')";
         db.execSQL(sql1);
-        String sql2 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+TRANGTHAI_COL+") VALUES ('Unavailable')";
+        String sql2 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+ MABAN_COL +","+TRANGTHAI_COL+") VALUES (2,'Unavailable')";
         db.execSQL(sql2);
-        String sql3 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+TRANGTHAI_COL+") VALUES ('Available')";
+        String sql3 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+ MABAN_COL +","+TRANGTHAI_COL+") VALUES (3,'Available')";
         db.execSQL(sql3);
-        String sql4 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+TRANGTHAI_COL+") VALUES ('Reserved')";
+        String sql4 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+ MABAN_COL +","+TRANGTHAI_COL+") VALUES (4,'Reserved')";
         db.execSQL(sql4);
+        String sql5 = "INSERT OR IGNORE INTO " + TABLE_NAME + "("+ MABAN_COL +","+TRANGTHAI_COL+") VALUES (5,'Reserved')";
+        db.execSQL(sql5);
     }
     public Table banSearch(int maBan, ArrayList<Table> lsTable){
         for(Table a: lsTable)
@@ -74,7 +75,7 @@ public class BanHandler extends SQLiteOpenHelper {
                 new String[]{String.valueOf(maBan)});
         db.close();
     }
-    public ArrayList<Table> loadData(){
+    public static ArrayList<Table> loadData(){
         ArrayList<Table> kq = new ArrayList<>();
         SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null, SQLiteDatabase.CREATE_IF_NECESSARY);
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME ,null);

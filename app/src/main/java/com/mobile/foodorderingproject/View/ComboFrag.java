@@ -32,7 +32,6 @@ import java.util.ArrayList;
 public class ComboFrag extends Fragment {
     ImageView imgMenu;
     GridView gridCombo;
-    SQLiteDatabase db;
     ArrayList<Combo> arrayListCombo;
     CustomComboAdapter adapter;
     TextView tvName, tvDesc, tvPrice, tvNums;
