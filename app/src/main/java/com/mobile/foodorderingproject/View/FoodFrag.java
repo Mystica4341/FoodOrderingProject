@@ -1,5 +1,6 @@
 package com.mobile.foodorderingproject.View;
 
+import android.annotation.SuppressLint;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
@@ -86,6 +88,7 @@ public class FoodFrag extends Fragment {
 // Inflate the layout for this fragment
         addControls(view);
         load();
+        addEvents();
         return view;
 
     }
@@ -102,5 +105,25 @@ public class FoodFrag extends Fragment {
         lsFood = FoodHandler.loadData();
         adapter = new CustomFoodAdapter(requireActivity(), lsFood);
         gridFood.setAdapter(adapter);
+    }
+
+    private void addEvents(){
+        gridFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int i = 0;
+                if (view.getId() == R.id.btnImgPlus) {
+                    i += 1;
+                    tvNums.setText(String.valueOf(i));
+                } else if (view.getId() == R.id.btnImgMinus){
+                    if (i < 0) {
+                        tvNums.setText(0);
+                    } else {
+                        i -= 1;
+                        tvNums.setText(String.valueOf(i));
+                    }
+                }
+            }
+        });
     }
 }

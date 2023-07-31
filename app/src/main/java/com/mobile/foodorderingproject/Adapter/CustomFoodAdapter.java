@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomFoodAdapter extends BaseAdapter {
+
 Context context;
     List<Food> lsFood;
     private final LayoutInflater layoutInflater;
@@ -46,6 +49,8 @@ Context context;
             holder.menuView = (ImageView) convertView.findViewById(R.id.imgMenu);
             holder.nameView = (TextView) convertView.findViewById(R.id.tvName);
             holder.priceView = (TextView) convertView.findViewById(R.id.tvPrice);
+            holder.btnImgPlus = (ImageButton) convertView.findViewById(R.id.btnImgPlus);
+            holder.btnImgMinus = (ImageButton) convertView.findViewById(R.id.btnImgMinus);
             convertView.setTag(holder);
         }
         else{
@@ -57,6 +62,19 @@ Context context;
         holder.priceView.setText(String.valueOf(food.getGiaFood()));
         int imageId = this.getMipMapResIdByName(food.getImgFood());
         holder.menuView.setImageResource(imageId);
+        holder.btnImgPlus.setOnClickListener(new View.OnClickListener()  {
+            @Override
+            public void onClick(View v) {
+
+                ((GridView)parent).performItemClick(v, position, 0);
+            }
+        });
+        holder.btnImgMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((GridView)parent).performItemClick(v, position, 0);
+            }
+        });
         return convertView;
     }
 
@@ -73,6 +91,7 @@ Context context;
     }
 
     static class ViewHolder {
+        ImageButton btnImgPlus, btnImgMinus;
         ImageView menuView;
         TextView nameView, priceView;
     }
