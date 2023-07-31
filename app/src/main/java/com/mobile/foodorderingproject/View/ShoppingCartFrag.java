@@ -13,24 +13,22 @@ import android.widget.TextView;
 
 import com.mobile.foodorderingproject.Adapter.CustomShoppingCartAdapter;
 import com.mobile.foodorderingproject.Model.LuuHoaDon;
+import com.mobile.foodorderingproject.Model.ShoppingCart;
 import com.mobile.foodorderingproject.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ShoppingCartFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ShoppingCartFrag extends Fragment {
+public class ShoppingCartFrag extends Fragment implements LuuHoaDon {
     ListView lvShopping;
     TextView tvTongMon, tvTongTien;
     Button btnAdd, btnDelete, btnConfirm;
     CustomShoppingCartAdapter adapter;
-    ArrayList<LuuHoaDon> arrayListLuuHoaDon;
+    ArrayList<ShoppingCart> arrayListShoppingCart;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,8 +76,7 @@ public class ShoppingCartFrag extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
         addControls(view);
-        arrayListLuuHoaDon = initData();
-        adapter = new CustomShoppingCartAdapter(requireActivity(),R.layout.item_shopping_cart_layout,arrayListLuuHoaDon);
+        adapter = new CustomShoppingCartAdapter(requireActivity(),R.layout.item_shopping_cart_layout,arrayListShoppingCart);
         lvShopping.setAdapter(adapter);
         return view;
     }
@@ -91,13 +88,9 @@ public class ShoppingCartFrag extends Fragment {
         tvTongMon=(TextView)view.findViewById(R.id.tvTongMon);
         tvTongTien=(TextView) view.findViewById(R.id.tvTongTien);
     }
-    public ArrayList<LuuHoaDon> initData(){
-        ArrayList<LuuHoaDon> lsData = new ArrayList<>();
-        LuuHoaDon lhd = new LuuHoaDon();
-        lsData.add(lhd);
-        return lsData;
-    }
-    public void addEvents(){
 
+    @Override
+    public void initData(ShoppingCart data) {
+        arrayListShoppingCart.add(data);
     }
 }

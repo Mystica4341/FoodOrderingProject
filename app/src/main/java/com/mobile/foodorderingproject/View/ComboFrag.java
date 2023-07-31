@@ -1,6 +1,5 @@
 package com.mobile.foodorderingproject.View;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,8 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,7 +17,7 @@ import android.widget.TextView;
 import com.mobile.foodorderingproject.Adapter.CustomComboAdapter;
 import com.mobile.foodorderingproject.Controller.ComboHandler;
 import com.mobile.foodorderingproject.Model.Combo;
-import com.mobile.foodorderingproject.Model.LuuHoaDon;
+import com.mobile.foodorderingproject.Model.ShoppingCart;
 import com.mobile.foodorderingproject.R;
 
 import java.util.ArrayList;
@@ -78,8 +75,6 @@ public class ComboFrag extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -103,12 +98,6 @@ public class ComboFrag extends Fragment {
         tvNums = (TextView)view.findViewById(R.id.tvNumsCombo);
         imgMenu = (ImageView)view.findViewById(R.id.imgMenu);
         gridCombo = (GridView)view.findViewById(R.id.gridCombo);
-    }
-
-    public void pushDataHoaDon(Bundle bundle, ArrayList<LuuHoaDon> arraylistLHD){
-        bundle.putParcelableArrayList("LuuHoaDon",arraylistLHD);
-        FragmentManager fm = getParentFragmentManager();
-        fm.setFragmentResult("keyMain",bundle);
     }
 
     public void load(){

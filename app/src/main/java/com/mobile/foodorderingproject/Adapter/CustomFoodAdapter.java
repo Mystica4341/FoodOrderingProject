@@ -1,7 +1,7 @@
 package com.mobile.foodorderingproject.Adapter;
 
 import android.content.Context;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mobile.foodorderingproject.Model.Food;
+import com.mobile.foodorderingproject.Model.LuuHoaDon;
+import com.mobile.foodorderingproject.Model.ShoppingCart;
 import com.mobile.foodorderingproject.R;
 
 import java.util.ArrayList;
@@ -20,6 +22,8 @@ import java.util.List;
 public class CustomFoodAdapter extends BaseAdapter {
     Context context;
     List<Food> lsFood;
+
+    LuuHoaDon lhd;
     private final LayoutInflater layoutInflater;
 
     @Override
@@ -66,7 +70,13 @@ public class CustomFoodAdapter extends BaseAdapter {
             public void onClick(View v) {
                 ((GridView)parent).performItemClick(v, position, 0);
                 holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText())+1));
+                String name = food.getTenFood();
+                int price = food.getGiaFood();
+                int soluong = Integer.parseInt((String) holder.numsView.getText());
+                ShoppingCart shoppingCart = new ShoppingCart(name, price, soluong);
+                lhd.initData(shoppingCart);
             }
+
         });
         holder.btnImgMinus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,8 +85,9 @@ public class CustomFoodAdapter extends BaseAdapter {
                 if(Integer.parseInt((String) holder.numsView.getText()) <= 0)
                     holder.numsView.setText("0");
                 else
-                    holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText())-1));
+                    holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText()) - 1));
             }
+
         });
         return convertView;
     }
@@ -98,4 +109,5 @@ public class CustomFoodAdapter extends BaseAdapter {
         ImageView menuView;
         TextView nameView, priceView, numsView;
     }
+
 }

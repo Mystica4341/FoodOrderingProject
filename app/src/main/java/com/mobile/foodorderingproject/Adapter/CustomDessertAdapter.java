@@ -1,6 +1,7 @@
 package com.mobile.foodorderingproject.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,7 +76,7 @@ public class CustomDessertAdapter extends BaseAdapter {
                 if(Integer.parseInt((String) holder.numsView.getText()) <= 0)
                     holder.numsView.setText("0");
                 else
-                    holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText())-1));
+                    holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText()) - 1));
             }
         });
         return convertView;

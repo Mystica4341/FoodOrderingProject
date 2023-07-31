@@ -1,31 +1,25 @@
 package com.mobile.foodorderingproject.View;
 
-import android.annotation.SuppressLint;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mobile.foodorderingproject.Adapter.CustomFoodAdapter;
-import com.mobile.foodorderingproject.Adapter.CustomShoppingCartAdapter;
 import com.mobile.foodorderingproject.Controller.FoodHandler;
 import com.mobile.foodorderingproject.Model.Food;
-import com.mobile.foodorderingproject.Model.LuuHoaDon;
 import com.mobile.foodorderingproject.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -87,11 +81,7 @@ public class FoodFrag extends Fragment {
         View view = inflater.inflate(R.layout.fragment_food, container, false);
         addControls(view);
         load();
-        gridFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            }
-        });
+        addEvents();
         return view;
     }
 
@@ -110,5 +100,12 @@ public class FoodFrag extends Fragment {
     }
 
     private void addEvents(){
+        gridFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
     }
+
 }

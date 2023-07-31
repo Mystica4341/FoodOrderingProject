@@ -9,25 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mobile.foodorderingproject.Adapter.CustomDrinkAdapter;
-import com.mobile.foodorderingproject.Adapter.CustomFoodAdapter;
-import com.mobile.foodorderingproject.Adapter.CustomShoppingCartAdapter;
 import com.mobile.foodorderingproject.Controller.DrinkHandler;
-import com.mobile.foodorderingproject.Controller.FoodHandler;
 import com.mobile.foodorderingproject.Model.Drink;
-import com.mobile.foodorderingproject.Model.Food;
-import com.mobile.foodorderingproject.Model.LuuHoaDon;
 import com.mobile.foodorderingproject.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -1,6 +1,7 @@
 package com.mobile.foodorderingproject.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,6 +64,7 @@ public class CustomDrinkAdapter extends BaseAdapter {
         holder.priceView.setText(String.valueOf(drink.getGiaDrink()));
         int imageId = this.getMipMapResIdByName(drink.getImgDrink());
         holder.menuView.setImageResource(imageId);
+
         holder.btnImgPlus.setOnClickListener(new View.OnClickListener()  {
             @Override
             public void onClick(View v) {
@@ -77,7 +79,7 @@ public class CustomDrinkAdapter extends BaseAdapter {
                 if(Integer.parseInt((String) holder.numsView.getText()) <= 0)
                     holder.numsView.setText("0");
                 else
-                    holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText())-1));
+                    holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText()) - 1));
             }
         });
         return convertView;
