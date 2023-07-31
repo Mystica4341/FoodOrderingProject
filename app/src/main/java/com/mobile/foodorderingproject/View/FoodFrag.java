@@ -35,6 +35,7 @@ import java.util.List;
 public class FoodFrag extends Fragment {
     ImageButton btnImgPlus, btnImgMinus;
     TextView tvNums, tvPrice, tvName;
+
     SQLiteDatabase db;
     GridView gridFood;
     CustomFoodAdapter adapter;
@@ -84,18 +85,14 @@ public class FoodFrag extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_food, container, false);
-
-// Inflate the layout for this fragment
         addControls(view);
         load();
         gridFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
             }
         });
         return view;
-
     }
 
     public void addControls(View view){

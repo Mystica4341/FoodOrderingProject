@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.GridView;
@@ -83,6 +84,11 @@ public class DessertFrag extends Fragment {
         View view=inflater.inflate(R.layout.fragment_desert,container,false);
         addControls(view);
         load();
+        gridDessert.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            }
+        });
         return view;
     }
     public void addControls(View view){

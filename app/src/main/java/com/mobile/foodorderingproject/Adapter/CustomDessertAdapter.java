@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,6 +47,9 @@ public class CustomDessertAdapter extends BaseAdapter {
             holder.menuView = (ImageView) convertView.findViewById(R.id.imgMenu);
             holder.nameView = (TextView) convertView.findViewById(R.id.tvName);
             holder.priceView = (TextView) convertView.findViewById(R.id.tvPrice);
+            holder.numsView = (TextView) convertView.findViewById(R.id.tvNums);
+            holder.btnImgPlus = (ImageButton) convertView.findViewById(R.id.btnImgPlus);
+            holder.btnImgMinus = (ImageButton) convertView.findViewById(R.id.btnImgMinus);
             convertView.setTag(holder);
         }
         else{
@@ -56,6 +61,23 @@ public class CustomDessertAdapter extends BaseAdapter {
         holder.priceView.setText(String.valueOf(dessert.getGiaDessert()));
         int imageId = this.getMipMapResIdByName(dessert.getImgDessert());
         holder.menuView.setImageResource(imageId);
+        holder.btnImgPlus.setOnClickListener(new View.OnClickListener()  {
+            @Override
+            public void onClick(View v) {
+                ((GridView)parent).performItemClick(v, position, 0);
+                holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText())+1));
+            }
+        });
+        holder.btnImgMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((GridView)parent).performItemClick(v, position, 0);
+                if(Integer.parseInt((String) holder.numsView.getText()) <= 0)
+                    holder.numsView.setText("0");
+                else
+                    holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText())-1));
+            }
+        });
         return convertView;
     }
 
@@ -68,12 +90,13 @@ public class CustomDessertAdapter extends BaseAdapter {
     public int getMipMapResIdByName(String resName){
         String pkgName = context.getPackageName();
         int ResId = context.getResources().getIdentifier(resName, "mipmap", pkgName);
-        Log.i("CustomGridView", "Res Name: "+ resName+"==> Res ID = "+ ResId);
+
         return ResId;
     }
 
     static class ViewHolder {
+        ImageButton btnImgPlus, btnImgMinus;
         ImageView menuView;
-        TextView nameView, priceView;
+        TextView nameView, priceView, numsView;
     }
 }

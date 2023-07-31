@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
@@ -86,6 +87,11 @@ public class ComboFrag extends Fragment {
         View view = inflater.inflate(R.layout.fragment_combo, container, false);
         addControls(view);
         load();
+        gridCombo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            }
+        });
         return view;
     }
     public void addControls(View view){
@@ -98,9 +104,7 @@ public class ComboFrag extends Fragment {
         imgMenu = (ImageView)view.findViewById(R.id.imgMenu);
         gridCombo = (GridView)view.findViewById(R.id.gridCombo);
     }
-    public void addEvents(){
 
-    }
     public void pushDataHoaDon(Bundle bundle, ArrayList<LuuHoaDon> arraylistLHD){
         bundle.putParcelableArrayList("LuuHoaDon",arraylistLHD);
         FragmentManager fm = getParentFragmentManager();
@@ -111,6 +115,9 @@ public class ComboFrag extends Fragment {
         arrayListCombo = ComboHandler.loadData();
         adapter = new CustomComboAdapter(requireActivity(),arrayListCombo);
         gridCombo.setAdapter(adapter);
+    }
+    public void addEvents(){
+
     }
 
 }

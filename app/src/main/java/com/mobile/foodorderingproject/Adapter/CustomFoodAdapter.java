@@ -18,11 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomFoodAdapter extends BaseAdapter {
-
-Context context;
+    Context context;
     List<Food> lsFood;
     private final LayoutInflater layoutInflater;
-
 
     @Override
     public int getCount() {
@@ -86,7 +84,7 @@ Context context;
     public CustomFoodAdapter(Context aContext, ArrayList<Food> lsFood) {
         this.lsFood = lsFood;
         this.layoutInflater = LayoutInflater.from(aContext);
-       this.context = aContext;
+        this.context = aContext;
     }
 
     public int getMipMapResIdByName(String resName){

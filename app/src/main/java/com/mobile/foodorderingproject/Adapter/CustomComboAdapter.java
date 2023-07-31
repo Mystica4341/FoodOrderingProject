@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,6 +50,9 @@ public class CustomComboAdapter extends BaseAdapter {
             holder.nameView = (TextView) convertView.findViewById(R.id.tvName);
             holder.priceView = (TextView) convertView.findViewById(R.id.tvPrice);
             holder.descView = (TextView)convertView.findViewById(R.id.tvDesc);
+            holder.numsView = (TextView) convertView.findViewById(R.id.tvNums);
+            holder.btnImgPlus = (ImageButton) convertView.findViewById(R.id.btnImgPlus);
+            holder.btnImgMinus = (ImageButton) convertView.findViewById(R.id.btnImgMinus);
             convertView.setTag(holder);
         }
         else{
@@ -80,6 +85,23 @@ public class CustomComboAdapter extends BaseAdapter {
                     + "\n" + comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
         holder.descView.setText(desc);
         holder.menuView.setImageResource(imageId);
+        holder.btnImgPlus.setOnClickListener(new View.OnClickListener()  {
+            @Override
+            public void onClick(View v) {
+                ((GridView)parent).performItemClick(v, position, 0);
+                holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText())+1));
+            }
+        });
+        holder.btnImgMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((GridView)parent).performItemClick(v, position, 0);
+                if(Integer.parseInt((String) holder.numsView.getText()) <= 0)
+                    holder.numsView.setText("0");
+                else
+                    holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText())-1));
+            }
+        });
         return convertView;
     }
 
@@ -97,7 +119,8 @@ public class CustomComboAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
+        ImageButton btnImgPlus, btnImgMinus;
         ImageView menuView;
-        TextView nameView, priceView, descView;
+        TextView nameView, priceView, descView, numsView;
     }
 }
