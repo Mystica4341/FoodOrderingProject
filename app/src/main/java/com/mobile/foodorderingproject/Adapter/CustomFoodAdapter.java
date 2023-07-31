@@ -49,6 +49,7 @@ Context context;
             holder.menuView = (ImageView) convertView.findViewById(R.id.imgMenu);
             holder.nameView = (TextView) convertView.findViewById(R.id.tvName);
             holder.priceView = (TextView) convertView.findViewById(R.id.tvPrice);
+            holder.numsView = (TextView) convertView.findViewById(R.id.tvNums);
             holder.btnImgPlus = (ImageButton) convertView.findViewById(R.id.btnImgPlus);
             holder.btnImgMinus = (ImageButton) convertView.findViewById(R.id.btnImgMinus);
             convertView.setTag(holder);
@@ -65,14 +66,18 @@ Context context;
         holder.btnImgPlus.setOnClickListener(new View.OnClickListener()  {
             @Override
             public void onClick(View v) {
-
                 ((GridView)parent).performItemClick(v, position, 0);
+                holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText())+1));
             }
         });
         holder.btnImgMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((GridView)parent).performItemClick(v, position, 0);
+                if(Integer.parseInt((String) holder.numsView.getText()) <= 0)
+                    holder.numsView.setText("0");
+                else
+                    holder.numsView.setText(String.valueOf(Integer.parseInt((String) holder.numsView.getText())-1));
             }
         });
         return convertView;
@@ -93,6 +98,6 @@ Context context;
     static class ViewHolder {
         ImageButton btnImgPlus, btnImgMinus;
         ImageView menuView;
-        TextView nameView, priceView;
+        TextView nameView, priceView, numsView;
     }
 }

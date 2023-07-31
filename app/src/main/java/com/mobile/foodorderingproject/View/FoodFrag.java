@@ -88,7 +88,12 @@ public class FoodFrag extends Fragment {
 // Inflate the layout for this fragment
         addControls(view);
         load();
-        addEvents();
+        gridFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
         return view;
 
     }
@@ -108,22 +113,5 @@ public class FoodFrag extends Fragment {
     }
 
     private void addEvents(){
-        gridFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int i = 0;
-                if (view.getId() == R.id.btnImgPlus) {
-                    i += 1;
-                    tvNums.setText(String.valueOf(i));
-                } else if (view.getId() == R.id.btnImgMinus){
-                    if (i < 0) {
-                        tvNums.setText(0);
-                    } else {
-                        i -= 1;
-                        tvNums.setText(String.valueOf(i));
-                    }
-                }
-            }
-        });
     }
 }
