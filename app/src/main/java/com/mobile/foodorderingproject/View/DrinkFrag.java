@@ -89,10 +89,6 @@ public class DrinkFrag extends Fragment {
 // Inflate the layout for this fragment
         addControls(view);
         DrinkActive();
-
-        adapter = new CustomDrinkAdapter(requireActivity(), lsDrink);
-        GridDrink.setAdapter(adapter);
-
         return view;
 
     }

@@ -114,70 +114,58 @@ public class ComboHandler extends SQLiteOpenHelper {
     }
     public String descFoodCombo(int maFood, int maCombo){
         String result = "";
-        SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null,SQLiteDatabase.OPEN_READONLY);
-        Cursor cursor = db.rawQuery("SELECT TenFood FROM " + TABLE_DATA_FOOD + ','+ TABLE_NAME +  " WHERE MaFood = ? and MaCombo = ?", new String[]{String.valueOf(maFood), String.valueOf(maCombo)});
+        String temp2 = "";
+        int i = 0;
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null,SQLiteDatabase.CREATE_IF_NECESSARY);
+        Cursor cursor = db.rawQuery("SELECT TenFood FROM " + TABLE_DATA_FOOD + ','+ TABLE_NAME +  " WHERE "+TABLE_DATA_FOOD+"."+MADOAN_COL+" = ? and "+TABLE_NAME+"."+MACOMBO_COL+" = ?", new String[]{String.valueOf(maFood), String.valueOf(maCombo)});
         cursor.moveToFirst();
         do{
-            String temp2 = "";
-            int i = 0;
             String temp1 = cursor.getString(0);
             if (temp1 != null){
                 i = 1;
             }
-            if(Objects.equals(temp1, temp2)){
+            if(Objects.equals(temp1, temp2))
                 i += 1;
-                result = i + " " + temp1;
-            }
-            else
-                result = i + " " + temp1;
+            result = i + " " + temp1;
             temp2 = temp1;
-            temp1 = "";
         }while(cursor.moveToNext());
         return result;
     }
     public String descDrinkCombo(int maDrink, int maCombo){
         String result = "";
-        SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null,SQLiteDatabase.OPEN_READONLY);
-        Cursor cursor = db.rawQuery("SELECT TenDrink FROM " + TABLE_DATA_DRINK+ ','+ TABLE_NAME + " WHERE MaDrink = ? and MaCombo = ?", new String[]{String.valueOf(maDrink), String.valueOf(maCombo)});
+        String temp2 = "";
+        int i = 0;
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null,SQLiteDatabase.CREATE_IF_NECESSARY);
+        Cursor cursor = db.rawQuery("SELECT TenDrink FROM " + TABLE_DATA_DRINK + ','+ TABLE_NAME +  " WHERE "+TABLE_DATA_DRINK+"."+MADOUONG_COL+" = ? and "+TABLE_NAME+"."+MACOMBO_COL+" = ?", new String[]{String.valueOf(maDrink), String.valueOf(maCombo)});
         cursor.moveToFirst();
         do{
-            String temp2 = "";
-            int i = 0;
             String temp1 = cursor.getString(0);
             if (temp1 != null){
                 i = 1;
             }
-            if(Objects.equals(temp1, temp2)){
+            if(Objects.equals(temp1, temp2))
                 i += 1;
-                result = i + " " + temp1;
-            }
-            else
-                result = i + " " + temp1;
+            result = i + " " + temp1;
             temp2 = temp1;
-            temp1 = "";
         }while(cursor.moveToNext());
         return result;
     }
     public String descDessertCombo(int maDessert, int maCombo){
         String result = "";
-        SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null,SQLiteDatabase.OPEN_READONLY);
-        Cursor cursor = db.rawQuery("SELECT TenDessert FROM " + TABLE_DATA_DESSERT+ ','+ TABLE_NAME +  " WHERE MaDessert = ? and MaCombo = ?", new String[]{String.valueOf(maDessert), String.valueOf(maCombo)});
+        String temp2 = "";
+        int i = 0;
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(PATH, null,SQLiteDatabase.CREATE_IF_NECESSARY);
+        Cursor cursor = db.rawQuery("SELECT TenDessert FROM " + TABLE_DATA_DESSERT + ','+ TABLE_NAME +  " WHERE "+TABLE_DATA_DESSERT+"."+MATRANGMIENG_COL+" = ? and "+TABLE_NAME+"."+MACOMBO_COL+" = ?", new String[]{String.valueOf(maDessert), String.valueOf(maCombo)});
         cursor.moveToFirst();
         do{
-            String temp2 = "";
-            int i = 0;
             String temp1 = cursor.getString(0);
             if (temp1 != null){
                 i = 1;
             }
-            if(Objects.equals(temp1, temp2)){
+            if(Objects.equals(temp1, temp2))
                 i += 1;
-                result = i + " " + temp1;
-            }
-            else
-                result = i + " " + temp1;
+            result = i + " " + temp1;
             temp2 = temp1;
-            temp1 = "";
         }while(cursor.moveToNext());
         return result;
     }

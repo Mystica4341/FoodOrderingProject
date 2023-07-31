@@ -33,7 +33,7 @@ public class ComboFrag extends Fragment {
     ImageView imgMenu;
     GridView gridCombo;
     SQLiteDatabase db;
-    ArrayList<Combo> arrayListCombo = new ArrayList<>();
+    ArrayList<Combo> arrayListCombo;
     CustomComboAdapter adapter;
     TextView tvName, tvDesc, tvPrice, tvNums;
     ImageButton btnMinus, btnPlus;
@@ -79,12 +79,6 @@ public class ComboFrag extends Fragment {
         }
     }
 
-    public ArrayList<Combo> initData(){
-        ArrayList<Combo> lsData = new ArrayList<>();
-        Combo combo = new Combo();
-        lsData.add(combo);
-        return(lsData);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -93,8 +87,6 @@ public class ComboFrag extends Fragment {
         View view = inflater.inflate(R.layout.fragment_combo, container, false);
         addControls(view);
         ComboActive();
-        adapter = new CustomComboAdapter(requireActivity(), arrayListCombo);
-        gridCombo.setAdapter(adapter);
         return view;
     }
     public void addControls(View view){

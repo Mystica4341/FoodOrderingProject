@@ -83,8 +83,6 @@ public class DessertFrag extends Fragment {
         View view=inflater.inflate(R.layout.fragment_desert,container,false);
         addControls(view);
         DessertActive();
-        adapter=new CustomDessertAdapter(requireActivity(),dessertArrayList);
-        gridDessert.setAdapter(adapter);
         return view;
     }
     public void addControls(View view){

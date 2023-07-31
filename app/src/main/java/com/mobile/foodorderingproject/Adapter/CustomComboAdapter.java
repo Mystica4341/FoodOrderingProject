@@ -18,7 +18,6 @@ import java.util.ArrayList;
 public class CustomComboAdapter extends BaseAdapter {
     ArrayList<Combo> arrayListCombo;
 
-    ComboHandler comboHandler;
     Context context;
     private final LayoutInflater layoutInflater;
 
@@ -41,7 +40,6 @@ public class CustomComboAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        String desc;
         //Tạo view Grid
         if (convertView == null){
             convertView = layoutInflater.inflate(R.layout.menu_combo_layout, null);
@@ -53,13 +51,15 @@ public class CustomComboAdapter extends BaseAdapter {
             convertView.setTag(holder);
         }
         else{
-            holder = (CustomComboAdapter.ViewHolder) convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
         //Truyền data lên view
         Combo combo = this.arrayListCombo.get(position);
+        ComboHandler comboHandler = new ComboHandler(convertView.getContext(),ComboHandler.DB_NAME,null,1);
         holder.nameView.setText(combo.getTenCombo());
         holder.priceView.setText(String.valueOf(combo.getGiaCombo()));
         int imageId = this.getMipMapResIdByName(combo.getImgCombo(), convertView.getContext());
+        String desc;
         if (combo.getMaDrink() == 0)
             desc = comboHandler.descFoodCombo(combo.getMaFood(),combo.getMaCombo()) + "\n" + comboHandler.descDessertCombo(combo.getMaDessert(),combo.getMaCombo());
         else if (combo.getMaFood() == 0)
